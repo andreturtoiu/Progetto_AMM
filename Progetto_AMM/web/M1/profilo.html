@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Nerdbook</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author"
+              content="Andreea Turtoiu">   
+        <meta name="keywords"
+              content="nerdbook">
+    </head>
+      
+    <body>
+       <header>
+            <div id="title">
+                 Nerdbook - Profilo
+            </div>            
+        </header>
+
+        <nav>
+            <h2>Navigazione</h2>
+            <ol>          
+                <li><a href="login.html">Login</a></li>
+                <li><a href="descrizione.html">Descrizione</a></li>
+            </ol>
+        </nav>
+        
+        <div id="divBody">
+            <div id="profilo">
+                <form action="demo_form.asp" method="post">
+                    <label for="firstname">Nome:</label>
+                    <input type="text" name="firstname" id ="firstname">
+                    <br/>
+                    <label for="lastname">Cognome:</label>
+                    <input type="text" name="lastname" id = "lastname">
+                    <br/>      
+                    <label for="profileImg">Immagine profilo</label>
+                    <input type="url" id="profileImg"/>
+                    <br/>
+                    <label for="psw"> Password:</label>
+                    <input type="password" name="psw" id="psw">
+                    <br/>
+                    <label for="confirmpsw">Conferma password:</label>
+                    <input type="password" name="psw" id="confirmpsw">
+                    <br/>
+                    <label for="textPost">Frase di descrizione:</label>
+                    <textarea name="textPost" id="textPost" ></textarea>
+                    <br/>                        
+                    <label for="bDay">Birthday:</label>
+                    <input type="date" name="bDay" id ="bDay">
+                    <br/>
+                    <button type="submit">Invia</button>                                                     
+                </form>                    
+            </div>  
+        </div>
+    </body>
+</html>
