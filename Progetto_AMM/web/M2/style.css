@@ -19,12 +19,15 @@ h1{
     text-align: center;
     font-weight: bold;
 
+
 }
 h2{
     margin-top: 0px;
     color: black;
     font: 20px/25px "Verdana", Arial, sans-serif;
     font-weight: bold;
+    margin-left: 10px;
+    
 }
 
 h3{
@@ -32,6 +35,7 @@ h3{
     color: black;
     font: 15px/20px "Verdana", Arial, sans-serif;
     font-weight: bold;
+    margin-left: 10px;
 }
 
 a:link{
@@ -70,11 +74,6 @@ nav ol, nav li{
 nav li{
     padding-left: 20px;
     padding-right: 20px;
-    border-right: 2px solid #111111;
-}
-
-nav li:last-child{
-    border-right: 0px solid #111111;
 }
 
 nav li.active{
@@ -88,29 +87,20 @@ nav{
 }
 
 header{
-    font: 30px/35px "Verdiana", Arial, sans-serif;
+    font: 20px "Verdiana", Arial, sans-serif;
+    font-weight: bold;
     background-color: #b3ccff;
     text-align: center;
     margin-bottom: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,.2);   
+    box-shadow: 0 0 5px rgba(0,0,0,.2);   
     position: fixed;
     top: 0px;
     left: 0px;
     right: 0px;
-    height: 100px;
-    
+    height: 80px;   
 }
 
-/** extra */
-
-nav{
-    width: 100%;
-}
-
-/** fine extra */
-
-
-#sideBar, #bacheca{
+#sideBar, #bacheca,#divBody{
     border: 2px solid white;
 }
 
@@ -139,27 +129,31 @@ ul li{
 }
 
 .contenuto{
-    margin-left: 10px;
-    margin-right: 10px;    
+    margin-left: 15px;
+    margin-right: 15px;    
 }
 
 .contenuto img{
     width: 90%;
 }
 
+#descrizione,#utenti,#iscrizione{
+    margin-left: 15px;
+    margin-right: 15px; 
+}
 
 form button{
-    width: 305px;
+    width: 255px;
     height: 30px;
 }
 
 form input{
-    width: 300px;
+    width: 250px;
 }
 
 textArea{
     resize: none;
-    width: 300px;
+    width: 250px;
     height: 50px;
 }
 
@@ -176,9 +170,12 @@ input,textArea{
     margin-right: auto;
 }
 
+#sommario{
+    font: 20px "Verdiana", Arial, sans-serif;
+}
 @media only screen and (min-width: 1024px){
     #bacheca{
-        width: 500px;
+        width: 800px;
         margin-left:300px;
     }  
     #sideBar{
@@ -197,17 +194,25 @@ input,textArea{
     }
 }
 
-@media only screen and(max-width: 480px){
-    #bacheca{
-        width: 250px;
-    }    
-    
+@media only screen and (max-width: 480px){
+
     nav{
         display: block;
+        float: none;
     }
     
     #sideBar{
-        margin-top: 300px;
+        margin-top: 120px;
+    }
+    
+    .formDati{
+        width: 300px;
+        float: left;
+        margin-top: 110px;
+    }
+    
+    #sommario{
+        margin-top: 120px;
     }
 }
 
@@ -223,7 +228,7 @@ input,textArea{
    .formDati{
         width: 300px;
         float: left;
-        margin-top: 150px;
+        margin-top: 130px;
     }
     #sommario{
         margin-top: 150px;
