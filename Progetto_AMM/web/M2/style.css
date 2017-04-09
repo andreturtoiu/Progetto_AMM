@@ -1,0 +1,72 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28-mar-2017, 9.23.35
+    Author     : Andreea Turtoiu
+*/
+
+body{
+    background-color: #FFEBCD; 
+}
+
+h1{
+    font-family:Arial; 
+    color: darkslateblue;
+    text-align: center;
+    font-style: italic;
+    font-size: 25px;
+}
+h2{
+    font-family: Arial;
+    font-size: 20px;
+    color:darkblue;
+}
+
+h3{
+    font-family: Arial;
+    font-size: 18px;
+    color: midnightblue;
+}
+
+a:link{
+    color: darkblue;
+}
+
+a:visited{
+    font-style: italic;
+    color: royalblue;
+}
+
+label::after, label::before{
+    content: '\A';
+    white-space: pre;
+}
+
+label{
+    color: darkblue;
+    font-size: 15px;
+    font-family: Arial;
+    font-style:italic;
+    font-weight: bold;
+}
+
+nav ol, nav li{
+    list-style-type: none;
+    display: inline-block;
+}
+nav li:last-child{
+    border-right: 0px solid #111111;
+}
+
+nav li.active{
+    text-decoration: underline;
+}
+
+nav{
+    background-color: #FFEBCD;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+}
