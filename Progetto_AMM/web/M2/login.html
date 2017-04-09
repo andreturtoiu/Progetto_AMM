@@ -15,20 +15,19 @@
     
     <body>
         <header>
-            <div id="title">
-                 Nerdbook - LogIn
-             </div>            
+            <div id="title">Nerdbook - Login </div>   
+            <nav>
+                <ol>
+                    <li><a href="bacheca.html">Bacheca</a></li> 
+                    <li><a href="profilo.html">Profilo</a></li>
+                    <li><a href="descrizione.html">Descrizione</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ol>
+            </nav>
         </header>
-        
-        <nav>
-            <ol>
-                <li><a href="bacheca.html">Bacheca</a></li> 
-                <li><a href="profilo.html">Profilo</a></li>
-                <li><a href="descrizione.html">Descrizione</a></li>
-                <li><a href="login.html">Login</a></li>
-            </ol>
-        </nav>
-        <div>
+
+        <div class="formDati" id="loginForm">
+           
             <form action="demo_form.asp" method="post">
                 <label for="corto">Username</label>
                 <input type="text" name="username"
