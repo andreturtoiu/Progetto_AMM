@@ -107,8 +107,7 @@ header{
     border-radius: 10px 10px 10px 10px;
 }
 
-#sideBar{
-    width: 250px;   
+#sideBar{ 
     font: 20px "Verdiana", Arial, sans-serif;
 }
 
@@ -197,16 +196,17 @@ input,textArea{
 }
 
 @media only screen and (min-width: 1024px){
+    #sideBar{
+        float: left;
+        margin-top: 100px;
+        width: 250px;  
+    }
+
     #bacheca{
         width: 70%;
         margin-left:255px;
         margin-top: 100px;
     }  
-    #sideBar{
-        float: left;
-        margin-top: 100px;
-    }
-
     .formDati {
         width: 300px;
         margin-top: 100px;
@@ -233,9 +233,9 @@ input,textArea{
     #sideBar{
        float: left;
        margin-top: 100px;
+       width: 250px;
    }
    #bacheca{
-       position: initial;
        width: 60%;
        float: left;
        margin-top: 100px;
