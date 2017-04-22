@@ -19,7 +19,7 @@
                     <li><a href="descrizione.html" id="nerdbook_style">NerdBook</a></li>
                     <li><a href="bacheca.html">Bacheca</a></li> 
                     <li><a href="profilo.html">Profilo</a></li>
-                    <li><a href="login.html" id="login_navBar">Logout</a></li>
+                    <li><a href="login.html">Logout</a></li>
                 </ol>
             </nav>
         </header>
@@ -42,6 +42,36 @@
                 </ul>
             </div>       
         </div>
+        <div id ="nuovoPost1">
+            <form action="bacheca.html">
+                <div id="nuovoPost">
+                    <div id="postContent">
+                        <div>
+                            <label for="textPost">Nuovo post</label>
+                            <textarea name="textPost" id="textPost" ></textarea>
+                        </div>
+                        <div>
+                            <label for="profileImg">Allegato</label>
+                            <input type="url" id="profileImg"/>
+                        </div>
+                    </div>
+                    <div id="postType">
+                        <div>
+                            <label for="immaginePost">Immagine</label>
+                            <input type="radio" name="immagine" value="immaginePost" id="immaginePost">
+                        </div>
+                        <div>
+                            <label for="LinkType">Link</label>
+                            <input type="radio" name="link" value="LinkType" id="LinkType">
+                        </div>
+                    </div>
+                    
+                    <button type="submit">Invia</button>
+                </div>            
+            </form>
+        </div>
+        
+
         
         <div id="bacheca">
             <h1>Post utente</h1>

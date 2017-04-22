@@ -64,6 +64,9 @@ label{
     color: black;
     font: 15px/20px "Verdana", Arial, sans-serif;
     font-weight: bold;
+    display: block;
+    margin-left: 22px;
+
 }
 
 
@@ -101,11 +104,12 @@ header{
  
 }
 
-#sideBar, #bacheca,#divBody ,.formDati, .formL{
+#sideBar, #bacheca,#divBody ,.formDati, .formL, #nuovoPost1{
     border: 2px solid white;
     background-color: #b3ccff;
     border-radius: 10px 10px 10px 10px;
 }
+
 
 #sideBar{ 
     font: 20px "Verdiana", Arial, sans-serif;
@@ -195,17 +199,19 @@ input,textArea{
     background-repeat: no-repeat;
 }
 
+
 @media only screen and (min-width: 1024px){
     #sideBar{
         float: left;
         margin-top: 100px;
-        width: 250px;  
+        width: 250px; 
+        height: 500px;
     }
 
     #bacheca{
         width: 70%;
-        margin-left:255px;
-        margin-top: 100px;
+        float:left;
+        
     }  
     .formDati {
         width: 300px;
@@ -225,6 +231,21 @@ input,textArea{
         margin-left: auto;
         margin-right: auto;
     }
+    a[href="login.html"]{
+        margin-left: 500px;
+    }
+    #nuovoPost1{
+        float: left;
+        margin-top: 100px;
+        width: 305px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    #postContent, #postType{
+        display : inline-block;
+    }
+    
  
 }
 
@@ -233,12 +254,12 @@ input,textArea{
     #sideBar{
        float: left;
        margin-top: 100px;
-       width: 250px;
+       width: 300px;
+       height: 350px;
    }
    #bacheca{
-       width: 60%;
+       width: 68%;
        float: left;
-       margin-top: 100px;
    }
    .formDati{
         width: 300px;
@@ -254,20 +275,36 @@ input,textArea{
     #sommario{
         margin-top: 150px;
     }
+    
+    a[href="login.html"]{
+        margin-right: 10px;
+        margin-left: 200px;
+    }
+    
+    #nuovoPost1{
+        float: left;
+        width: 305px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 100px;
+        height: 350px;
+    }
 }
+
 
 @media only screen and (max-width: 480px){
 
-    nav{
+    nav li{
         display: block;
-        float: none;
     }
     #bacheca{
         width: 350px;
+        margin-top: 315px;
     }
     #sideBar{
         margin-top: 170px;
         width: 350px;
+       
     }
     
     .formDati{
@@ -285,4 +322,9 @@ input,textArea{
     #sommario{
         margin-top: 150px;
     }
+    #nuovoPost1{
+        float: left;
+        width: 350px;
+    }
 }
+
