@@ -1,0 +1,330 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28-mar-2017, 9.23.35
+    Author     : Andreea Turtoiu
+*/
+
+body{
+    background-color: white; 
+}
+
+h1{
+    margin-top: 0px;
+    color: black;
+    font: 25px/30px "Verdana", Arial, sans-serif;
+    text-align: center;
+    font-weight: bold;
+
+
+}
+h2{
+    margin-top: 0px;
+    color: black;
+    font: 20px/25px "Verdana", Arial, sans-serif;
+    font-weight: bold;
+    margin-left: 10px;
+    
+}
+
+h3{
+    margin-top: 0px;
+    color: black;
+    font: 15px/20px "Verdana", Arial, sans-serif;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+a:link{
+    font-size: 15px;
+    color: darkblue;
+    text-decoration: none;
+}
+
+a:visited{
+    color: black;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+a:hover{
+    font-weight: bold;
+    font-size: 17px;
+}
+
+label::after, label::before{
+    content: '\A';
+    white-space: pre;
+}
+
+label{
+    color: black;
+    font: 15px/20px "Verdana", Arial, sans-serif;
+    font-weight: bold;
+    display: block;
+    margin-left: 22px;
+
+}
+
+
+nav ol, nav li{
+    list-style-type: none;
+    display: inline-block;
+}
+
+nav li{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+nav li.active{
+    text-decoration: underline;
+}
+
+nav{
+    background-color: #b3ccff;
+    text-align: left;
+    box-shadow: 0 0 25px rgba(0,0,0,.2);
+}
+
+header{
+    font: 20px "Verdiana", Arial, sans-serif;
+    font-weight: bold;
+    background-color: #b3ccff;
+    text-align: center;
+    margin-top: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);   
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px; 
+ 
+}
+
+#sideBar, #bacheca,#divBody ,.formDati, .formL, #nuovoPost1{
+    border: 2px solid white;
+    background-color: #b3ccff;
+    border-radius: 10px 10px 10px 10px;
+}
+
+
+#sideBar{ 
+    font: 20px "Verdiana", Arial, sans-serif;
+}
+
+#sideBar img{
+    width: 40px;
+}
+
+.userName img{
+    width: 100px;
+    float: left;
+}
+
+.userName{
+    width: 100%;
+    height: 100px;
+    margin-top: 50px;
+}
+
+ul li{
+    list-style-type: none;
+}
+
+.contenuto{
+    margin-left: 15px;
+    margin-right: 15px;    
+}
+
+.contenuto img{
+    width: 90%;
+}
+
+#descrizione,#utenti,#iscrizione{
+    margin-left: 15px;
+    margin-right: 15px; 
+}
+
+form button{
+    width: 255px;
+    height: 30px;
+    margin-left: 25px;
+}
+
+form input{
+    width: 250px;
+    margin-left: 25px;
+    
+    
+}
+
+textArea{
+    resize: none;
+    width: 250px;
+    height: 50px;
+    margin-left: 25px;
+   
+}
+
+input:focus,textArea:focus{
+    border-color: midnightblue;
+}
+
+input,textArea{
+    border-color:black;
+}
+
+#loginForm{
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+
+}
+
+#sommario{
+    font: 20px "Verdiana", Arial, sans-serif;
+}
+
+#nerdbook_style{
+    font-size: 25px;
+    color: white;
+    font-family: serif;
+}
+
+#users{
+    background-image: url('img/unnamed.png');
+    background-repeat: no-repeat;
+}
+
+
+@media only screen and (min-width: 1024px){
+    #sideBar{
+        float: left;
+        margin-top: 100px;
+        width: 250px; 
+        height: 500px;
+    }
+
+    #bacheca{
+        width: 70%;
+        float:left;
+        
+    }  
+    .formDati {
+        width: 300px;
+        margin-top: 100px;
+        float: left;
+    }
+    .formL{
+        width: 300px;
+        margin-top: 100px;    
+    }
+    
+     #sommario{
+        margin-top: 150px;
+    }
+    
+    #loginForm{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    a[href="login.html"]{
+        margin-left: 500px;
+    }
+    #nuovoPost1{
+        float: left;
+        margin-top: 100px;
+        width: 305px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    #postContent, #postType{
+        display : inline-block;
+    }
+    
+ 
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 480px){
+   
+    #sideBar{
+       float: left;
+       margin-top: 100px;
+       width: 300px;
+       height: 350px;
+   }
+   #bacheca{
+       width: 68%;
+       float: left;
+   }
+   .formDati{
+        width: 300px;
+        float: left;
+        margin-top: 100px;
+    }
+    
+    .formL{
+        width: 300px;
+        margin-top: 100px;    
+    }
+    
+    #sommario{
+        margin-top: 150px;
+    }
+    
+    a[href="login.html"]{
+        margin-right: 10px;
+        margin-left: 200px;
+    }
+    
+    #nuovoPost1{
+        float: left;
+        width: 305px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 100px;
+        height: 350px;
+    }
+}
+
+
+@media only screen and (max-width: 480px){
+
+    nav li{
+        display: block;
+    }
+    #bacheca{
+        width: 350px;
+        margin-top: 315px;
+    }
+    #sideBar{
+        margin-top: 170px;
+        width: 350px;
+       
+    }
+    
+    .formDati{
+        width: 300px;
+        float: left;
+        margin-top: 100px;
+        width: 350px;
+    }
+    
+    .formL{
+        width: 300px;
+        margin-top: 100px;    
+    }
+    
+    #sommario{
+        margin-top: 150px;
+    }
+    #nuovoPost1{
+        float: left;
+        width: 350px;
+    }
+}
+
