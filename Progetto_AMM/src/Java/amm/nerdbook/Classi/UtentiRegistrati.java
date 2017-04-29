@@ -23,10 +23,16 @@ public class UtentiRegistrati {
         nome = "";
         cognome = "";
         password = "";
-        fraseDescrizione = "";
         dataNascita = "";
     }
     
+    public boolean completo(){
+        if(this.nome !=null && this.cognome != null && 
+                this.fraseDescrizione != null && this.urlFotoProfilo != null)
+           return true;
+        else 
+           return false;
+    }
         /**
      * @return the id
      */

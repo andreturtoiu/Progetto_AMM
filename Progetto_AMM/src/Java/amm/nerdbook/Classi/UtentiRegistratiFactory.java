@@ -37,16 +37,16 @@ public class UtentiRegistratiFactory {
         
         
         UtentiRegistrati utente2 = new UtentiRegistrati();
-        utente2.setId(2);
+        utente2.setId(1);
         utente2.setNome("Deadpool");
         utente2.setCognome("");
         utente2.setPassword("456");
         utente2.setUrlFotoProfilo("img/images.jpg");
-        utente2.setFraseDescrizione("");
+        //utente2.setFraseDescrizione("");
         utente2.setDataNascita("07/02/1991");
         
         UtentiRegistrati utente3 = new UtentiRegistrati();
-        utente3.setId(3);
+        utente3.setId(2);
         utente3.setNome("Jerry");
         utente3.setCognome("");
         utente3.setPassword("789");

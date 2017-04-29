@@ -69,6 +69,13 @@ label{
 
 }
 
+#postType label::after, #postType label::before{
+    content: '';
+    
+}
+#postType label, #postType input{
+    display: inline;    
+}
 
 nav ol, nav li{
     list-style-type: none;
@@ -231,7 +238,7 @@ input,textArea{
         margin-left: auto;
         margin-right: auto;
     }
-    a[href="login.html"]{
+    a.inOut{
         margin-left: 500px;
     }
     #nuovoPost1{
@@ -276,7 +283,7 @@ input,textArea{
         margin-top: 150px;
     }
     
-    a[href="login.html"]{
+    a.inOut{
         margin-right: 10px;
         margin-left: 200px;
     }

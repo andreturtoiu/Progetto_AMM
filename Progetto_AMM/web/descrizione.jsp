@@ -15,16 +15,8 @@
     </head>
 
     <body>
-        <header> 
-            <nav>
-                <ol>
-                    <li><a href="descrizione.html" id="nerdbook_style">NerdBook</a></li>
-                    <li><a href="login.html">Login</a></li>
-                </ol>
-
-            </nav>
-        </header>
-
+        <c:set var="pagina" value="descrizione" scope="request"/>
+        <jsp:include page="header.jsp"/>
         <div id="divBody">
             <div id="sommario">
                 <h2>Sommario</h2>

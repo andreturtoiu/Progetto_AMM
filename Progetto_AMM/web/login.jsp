@@ -16,14 +16,20 @@
 
 
     <body>
-
-        <div class="formL" id="loginForm">           
-            <form action="profilo.html" method="post">
+        <c:set var="pagina" value="login" scope="request"/>
+        <jsp:include page="header.jsp"/>
+        <div class="formL" id="loginForm">  
+            
+            <c:if test="${invalidData == true}">
+                <div id="invalidDataWarning">I dati inseriti non sono corretti</div>
+            </c:if>
+                
+            <form action="Login" method="get">
                 <label for="uName">Username</label>
                 <input type="text" name="username" id="uName"/>
 
                 <label for="pswd">Password</label>
-                <input type="password" name="pswd” " id="pswd"/>
+                <input type="password" name="pswd" id="pswd"/>
 
                 <button type="submit">Accedi</button>
             </form>             

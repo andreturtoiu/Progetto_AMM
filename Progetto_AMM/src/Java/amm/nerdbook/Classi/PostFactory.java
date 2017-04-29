@@ -47,14 +47,14 @@ public class PostFactory {
         "- Una volta uno mi ha detto che alla fine di tutto rimpiangiamo non quello che abbiamo fatto, ma quello che non abbiamo fatto.\n");
         post2.setAllegato("img/pool.jpg");
         post2.setId(1);
-        post2.setUser(utentiRegistratiFactory.getUtentiRegistratiById(2));
+        post2.setUser(utentiRegistratiFactory.getUtentiRegistratiById(1));
         post2.setPostType(Post.Type.IMAGE);
 
         Post post3 = new Post();
         post3.setContent("La Ofcom ha spiegato che Tom & Jerry è un cartone animato vintage realizzato in un periodo in cui il rischio legato al fumo non era ancora stato attentamente studiato e che questa era un'ottima ragione per chiedere alla Turner di prendere provvedimenti. Tom & Jerry però sono stati censurati altre volte. Molte scene di altri episodi contenevano dei blackface, cioè quando esplodeva qualcosa o il viso di Tom, Jerry o altri personaggi si coprivano di fango, essi diventavano come delle persone africane e ciò poteva risultare offensivo per le persone di origine africana. Un altro episodio censurato è Il suo topo Venerdì (His Mouse Friday, 1951) a causa degli stereotipi razziali in esso contenuti.\n");
         post3.setAllegato("https://i.makeagif.com/media/6-06-2015/nc_GSl.gif");
         post3.setId(2);
-        post3.setUser(utentiRegistratiFactory.getUtentiRegistratiById(3));
+        post3.setUser(utentiRegistratiFactory.getUtentiRegistratiById(2));
         post3.setPostType(Post.Type.LINK);
 
         listaPost.add(post1);
