@@ -19,6 +19,8 @@ public class Post {
     private UtentiRegistrati user;
     private String content;
     private Type postType;
+    private String allegato;
+    
 
     public Post() {
         id = 0;
@@ -81,5 +83,21 @@ public class Post {
      */
     public void setPostType(Type postType) {
         this.postType = postType;
-    }  
+    
+    }
+    
+     /**
+     * @return the allegato
+     */
+    public String getAllegato() {
+        return allegato;
+    }
+
+    /**
+     * @param allegato the allegato to set
+     */
+    public void setAllegato(String allegato) {
+        this.allegato = allegato;
+    }
+    
 }

@@ -15,20 +15,7 @@
     </head>
 
     <body>
-        <header>  
-            <nav>
-                <ol>
-                    <li><a href="descrizione.html" id="nerdbook_style">NerdBook</a></li>
-                    <li><a href="bacheca.html">Bacheca</a></li> 
-                    <li><a href="profilo.html">Profilo</a></li>
-                    <li><a href="login.html">Logout</a></li>
-                </ol>
-
-            </nav>
-        </header>
-
-
-        <div id="sideBar">
+       <div id="sideBar">
             <div id="user">
                 <h3>Utenti</h3>
                 <ul>

@@ -16,9 +16,6 @@
 
 
     <body>
-        <header>
-            <a href="descrizione.html" id="nerdbook_style">NerdBook</a>
-        </header>
 
         <div class="formL" id="loginForm">           
             <form action="profilo.html" method="post">
