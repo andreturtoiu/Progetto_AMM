@@ -32,7 +32,7 @@ public class UtentiRegistratiFactory {
         utente1.setCognome("Bunny");
         utente1.setPassword("123");
         utente1.setUrlFotoProfilo("img/bunny.jpg");
-        utente1.setFraseDescrizione("");
+        utente1.setFraseDescrizione("Ho le orecchie più belle del mondo");
         utente1.setDataNascita("27/07/1940");
         
         
@@ -51,7 +51,7 @@ public class UtentiRegistratiFactory {
         utente3.setCognome("");
         utente3.setPassword("789");
         utente3.setUrlFotoProfilo("img/images1.jpg");
-        utente3.setFraseDescrizione("");
+        utente3.setFraseDescrizione("Sono un topo obbediente");
         utente3.setDataNascita("01/01/1940");
         
         listaUtentiRegistrati.add(utente1);

@@ -111,7 +111,7 @@ header{
  
 }
 
-#sideBar, #bacheca,#divBody ,.formDati, .formL, #nuovoPost1{
+#sideBar, #bacheca,#divBody ,.formDati, .formL, #nuovoPost1, #fraseDescrizione{
     border: 2px solid white;
     background-color: #b3ccff;
     border-radius: 10px 10px 10px 10px;
@@ -241,6 +241,15 @@ input,textArea{
     a.inOut{
         margin-left: 500px;
     }
+    
+    #fraseDescrizione{
+        margin-top: 100px;
+        width: 305px;
+        margin-left: auto;
+        margin-right: auto;
+        float: left;
+    }
+    
     #nuovoPost1{
         float: left;
         margin-top: 100px;
@@ -286,6 +295,15 @@ input,textArea{
     a.inOut{
         margin-right: 10px;
         margin-left: 200px;
+    }
+    
+     #fraseDescrizione{
+        margin-top: 100px;
+        width: 305px;
+        margin-left: auto;
+        margin-right: auto;
+        float: left;
+        height: 150px;
     }
     
     #nuovoPost1{

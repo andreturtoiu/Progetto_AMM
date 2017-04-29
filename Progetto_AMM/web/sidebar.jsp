@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 
 <div id="sideBar">
-            <div id="user">
+            <div id="user">                
                 <h3>Utenti</h3>
                 <ul>
                     <li>

@@ -33,6 +33,8 @@ public class UtentiRegistrati {
         else 
            return false;
     }
+    
+    
         /**
      * @return the id
      */

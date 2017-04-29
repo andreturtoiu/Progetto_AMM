@@ -20,18 +20,18 @@
         <c:set var="pagina" value="bacheca" scope="request"/>
         <jsp:include page="header.jsp"/>
         <jsp:include page="sidebar.jsp"/>
-
+        
         <div id ="nuovoPost1">
-            <form action="Bacheca">
+            <form action="NewPost.jsp">
                 <div id="nuovoPost">
                     <div id="postContent">
                         <div>
                             <label for="textPost">Nuovo post</label>
-                            <textarea name="textPost" id="textPost" ></textarea>
+                            <textarea name="textPost" id="textPost" value ="${newPost}" ></textarea>
                         </div>
                         <div>
                             <label for="profileImg">Allegato</label>
-                            <input type="url" id="profileImg"/>
+                            <input type="url" id="profileImg" value ="${newUrl}"/>
                         </div>
                     </div>
                     <div id="postType">
@@ -48,6 +48,13 @@
                     <button type="submit">Invia</button>
                 </div>            
             </form>
+        </div>
+        
+
+        <div id="fraseDescrizione">
+            <c:if test="${user.fraseDescrizione != null}">
+                <p> ${user.nome} ${user.cognome }:<br/>${user.fraseDescrizione}</p>
+            </c:if>  
         </div>
 
         <div id="bacheca">
