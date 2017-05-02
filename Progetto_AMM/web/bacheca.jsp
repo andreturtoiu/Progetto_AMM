@@ -23,6 +23,7 @@
         
         <div id ="nuovoPost1">
             <form action="NewPost.jsp">
+                <input type="hidden" name="userB" value="${user.nome}"/>
                 <div id="nuovoPost">
                     <div id="postContent">
                         <div>
@@ -30,18 +31,19 @@
                             <textarea name="textPost" id="textPost" value ="${newPost}" ></textarea>
                         </div>
                         <div>
-                            <label for="profileImg">Allegato</label>
-                            <input type="url" id="profileImg" value ="${newUrl}"/>
+                            <label for="link">Allegato</label>
+                            <input type="url" name="urlAllegato" id="link" value ="${newUrl}"/>
+                                  
                         </div>
                     </div>
                     <div id="postType">
                         <div>
                             <label for="immaginePost">Immagine</label>
-                            <input type="radio" name="immagine" value="immaginePost" id="immaginePost">
+                            <input type="radio" name="postType" value="immaginePost" id="immaginePost">
                         </div>
                         <div>
                             <label for="LinkType">Link</label>
-                            <input type="radio" name="link" value="LinkType" id="LinkType">
+                            <input type="radio" name="postType" value="LinkType" id="LinkType">
                         </div>
                     </div>
 
@@ -49,13 +51,14 @@
                 </div>            
             </form>
         </div>
-        
-
-        <div id="fraseDescrizione">
-            <c:if test="${user.fraseDescrizione != null}">
-                <p> ${user.nome} ${user.cognome }:<br/>${user.fraseDescrizione}</p>
-            </c:if>  
-        </div>
+             
+        <c:if test="${user.fraseDescrizione != null}">
+            <div id="fraseDescrizione">
+                <p> ${user.nome} ${user.cognome } :</p>
+                <p>${user.fraseDescrizione}</p>
+            </div>
+        </c:if>  
+       
 
         <div id="bacheca">
             <c:forEach var="post" items="${posts}">
