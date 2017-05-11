@@ -20,6 +20,7 @@ public class Post {
     private String content;
     private Type postType;
     private String allegato;
+    private String connectionString;
     
 
     public Post() {
@@ -98,6 +99,20 @@ public class Post {
      */
     public void setAllegato(String allegato) {
         this.allegato = allegato;
+    }
+    
+        /**
+     * @return the connectionString
+     */
+    public String getConnectioString() {
+        return connectionString;
+    }
+
+    /**
+     * @param connectionString the connectionString to set
+     */
+    public void setConnectioString(String connectionString) {
+        this.connectionString = connectionString;
     }
     
 }

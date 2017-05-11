@@ -13,6 +13,7 @@ public class Gruppi {
     private int id;
     private String nome;
     private String urlImmagine;
+    private String connectionString;
     
     public Gruppi(){
         id = 0;
@@ -61,4 +62,19 @@ public class Gruppi {
     public void setUrlImmagine(String urlImmagine) {
         this.urlImmagine = urlImmagine;
     }
+    
+    /**
+     * @return the connectionString
+     */
+    public String getConnectioString() {
+        return connectionString;
+    }
+
+    /**
+     * @param connectionString the connectionString to set
+     */
+    public void setConnectioString(String connectionString) {
+        this.connectionString = connectionString;
+    }
+    
 }

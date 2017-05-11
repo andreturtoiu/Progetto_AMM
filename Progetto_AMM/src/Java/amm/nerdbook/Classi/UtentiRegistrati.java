@@ -17,7 +17,7 @@ public class UtentiRegistrati {
     private String urlFotoProfilo;
     private String fraseDescrizione;
     private String dataNascita;
-
+    public String connectionString;
     public UtentiRegistrati() {
         id = 0;
         nome = "";
@@ -133,5 +133,18 @@ public class UtentiRegistrati {
         this.dataNascita = dataNascita;
     }
 
+    /**
+     * @return the connectionString
+     */
+    public String getConnectioString() {
+        return connectionString;
+    }
+
+    /**
+     * @param connectionString the connectionString to set
+     */
+    public void setConnectioString(String connectionString) {
+        this.connectionString = connectionString;
+    }
 
 }

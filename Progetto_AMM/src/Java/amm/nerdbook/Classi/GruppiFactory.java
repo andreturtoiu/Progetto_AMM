@@ -15,6 +15,8 @@ public class GruppiFactory {
     //Pattern Design Singleton
     private static GruppiFactory singleton;
     
+ 
+    
     public static GruppiFactory getInstance() {
     if (singleton == null) {
         singleton = new GruppiFactory();

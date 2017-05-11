@@ -1,0 +1,37 @@
+Tabella UTENTI:
+
+id che identifica l'utente
+nome
+cognome
+password
+frase di presentazione
+urlProfilo
+dataNascita
+
+
+Tabella GRUPPI:
+id che indentifica il post
+nome 
+urlImmagine
+amministratore
+
+Tabella TIPO DI POST:
+id del post
+nome che indica il tipo di post
+
+Tabella dei POST:
+id del post
+autore del post
+contenuto 
+tipo del post  -chiave esterna che punta alla tabella TIPO DI POST
+id del Gruppo  -chiave esterna che punta alla tabella GRUPPI
+id del Utente  -chiave esterna che punta alla tabella degli UTENTI
+
+Tabella ISCRIZIONI : //gestisce l'iscrizione a un gruppo
+id dei gruppi    -chiave esterna che punta alla tabella dei GRUPPI
+id degli utenti  -chave esterna che punta alla tabella degli UTENTI
+
+
+Tabella delle AMICIZIE:
+-id utente 1  -chiave esterna che punta alla tabella degli UTENTI
+-id utente 2  -chiave esterna che punta alla tabella degli UTENTI
