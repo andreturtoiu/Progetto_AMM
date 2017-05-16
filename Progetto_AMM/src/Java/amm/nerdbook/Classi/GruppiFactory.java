@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class GruppiFactory {
     //Pattern Design Singleton
     private static GruppiFactory singleton;
+    private String connectionString;
     
  
     
@@ -43,6 +44,12 @@ public class GruppiFactory {
 
         listaGruppi.add(gruppo1);
         listaGruppi.add(gruppo2);
+    }
+    public void setConnectionString(String s){
+	this.connectionString = s;
+    }
+    public String getConnectionString(){
+	return this.connectionString;
     }
     
 }

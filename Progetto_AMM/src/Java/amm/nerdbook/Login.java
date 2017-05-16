@@ -5,10 +5,14 @@
  */
 package amm.nerdbook;
 
+import amm.nerdbook.Classi.GruppiFactory;
+import amm.nerdbook.Classi.PostFactory;
 import amm.nerdbook.Classi.UtentiRegistratiFactory;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,8 +22,12 @@ import javax.servlet.http.HttpSession;
  *
  * @author Andreea
  */
-public class Login extends HttpServlet {
 
+@WebServlet(loadOnStartup = 0)
+public class Login extends HttpServlet {
+    private static final String JDBC_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+    private static final String DB_CLEAN_PATH = "../../web/WEB-INF/db/ammdb";
+    private static final String DB_BUILD_PATH = "WEB-INF/db/ammdb";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -84,6 +92,20 @@ public class Login extends HttpServlet {
         request.getRequestDispatcher("login.jsp").forward(request, response);
         
     }
+    
+    @Override
+    public void init(){
+        String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_BUILD_PATH;
+        try {
+            Class.forName(JDBC_DRIVER);
+            } catch (ClassNotFoundException ex) {
+                  Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        UtentiRegistratiFactory.getInstance().setConnectionString(dbConnection);
+        GruppiFactory.getInstance().setConnectionString(dbConnection);
+        PostFactory.getInstance().setConnectionString(dbConnection);
+   
+   }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

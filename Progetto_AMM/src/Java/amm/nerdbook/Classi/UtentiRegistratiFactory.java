@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class UtentiRegistratiFactory {
      //Pattern Design Singleton
     private static UtentiRegistratiFactory singleton;
+    private String connectionString;
     
     public static UtentiRegistratiFactory getInstance() {
     if (singleton == null) {
@@ -76,4 +77,12 @@ public class UtentiRegistratiFactory {
         }
         return -1;
     }
+    
+    public void setConnectionString(String s){
+	this.connectionString = s;
+    }
+    public String getConnectionString(){
+	return this.connectionString;
+    }
+    
 }

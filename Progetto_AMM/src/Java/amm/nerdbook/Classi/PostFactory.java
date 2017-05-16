@@ -17,6 +17,7 @@ public class PostFactory {
     
      //Pattern Design Singleton
     private static PostFactory singleton;
+    private String connectionString;
 
     public static PostFactory getInstance() {
         if (singleton == null) {
@@ -83,4 +84,12 @@ public class PostFactory {
         }
         return listaPost;
     }
+    
+    public void setConnectionString(String s){
+	this.connectionString = s;
+    }
+    public String getConnectionString(){
+	return this.connectionString;
+    }
+    
 }
