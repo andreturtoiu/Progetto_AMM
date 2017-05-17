@@ -5,7 +5,11 @@
  */
 package amm.nerdbook.Classi;
 
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -25,66 +29,113 @@ public class PostFactory {
         }
         return singleton;
     }
-    
-     private ArrayList<Post> listaPost = new ArrayList<Post>();
      
-      private PostFactory() {
-        
-        UtentiRegistratiFactory utentiRegistratiFactory = UtentiRegistratiFactory.getInstance();
-                
-        //Creazione Post
-        Post post1 = new Post();
-        post1.setContent("Un sondaggio inglese rivela: la frase più ricordata tra gli amanti dei cartoon è quella del celebre coniglio: «Che succede amico?»Bugs Bunny Per gli americani dev'essere una sorta di riflesso condizionato: davanti alle orecchie di un coniglio viene automatico pensare «what's up doc?». E si capisce. E' la frase «tormentone» del coniglio più famoso d'America: Bugs Bunny. La faccia soddisfatta del dentone carota-dipendente la dice a ripetizione anche da noi, al di qua delle Alpi: «Che succede amico?». E non è un caso che sia proprio quella la frase la più famosa legata a un personaggio dei cartoon. Lo rivela un recente studio-sondaggio voluto dalla sede inglese del gruppo di distribuzione cinematografica Uci Cinemas per lanciare l'ultimo film della Warner Bros, Back in Action. A 500 cinefili inglesi appassionati di cartoni animati è stato chiesto quale detto, frase o parola amano e ricordano di più in relazione a un cartoon. Bene: su tutti ha prevalso quel «what's up doc?», seguito da «Doh!», espressione fra lo sgomento e lo stupito di un personaggio ben più giovane di Bugs, Homer Simpson il confuso ispettore nucleare della famiglia più strampalata dei cartoon.");
-        post1.setId(0);
-        post1.setUser(utentiRegistratiFactory.getUtentiRegistratiById(0));
-        post1.setPostType(Post.Type.TEXT);
-
-        Post post2 = new Post();
-        post2.setContent(" Che c'è, non hai mai sentito parlare di Google? Dovresti cercarlo su Google.\n" +
-        "- A volte, non sempre ovviamente, ma a volte, io... vedo come delle cose. Ho delle visioni. Immagini distorte della realtà. [...] Oh, non è una cosa fissa. Ma il piccolo uomo pallido dietro la tenda, cioè il mio editor-- dice non più di due per episodio.\n" +
-        "- Ehi, tamarro. Senti, io sono uno dei buoni--- be', almeno in questo numero...\n" +
-        "-Fare l'eroe è la professione più breve del mondo. Fa tutto ridere, finchè capita a qualcun altro.\n" +
-        "- Sono stato creato specificamente dagli umani... per uccidere gli umani. Il che la dice lunga sulla razza umana in generale, non credete?!\n" +
-        "- Una volta uno mi ha detto che alla fine di tutto rimpiangiamo non quello che abbiamo fatto, ma quello che non abbiamo fatto.\n");
-        post2.setAllegato("img/pool.jpg");
-        post2.setId(1);
-        post2.setUser(utentiRegistratiFactory.getUtentiRegistratiById(1));
-        post2.setPostType(Post.Type.IMAGE);
-
-        Post post3 = new Post();
-        post3.setContent("La Ofcom ha spiegato che Tom & Jerry è un cartone animato vintage realizzato in un periodo in cui il rischio legato al fumo non era ancora stato attentamente studiato e che questa era un'ottima ragione per chiedere alla Turner di prendere provvedimenti. Tom & Jerry però sono stati censurati altre volte. Molte scene di altri episodi contenevano dei blackface, cioè quando esplodeva qualcosa o il viso di Tom, Jerry o altri personaggi si coprivano di fango, essi diventavano come delle persone africane e ciò poteva risultare offensivo per le persone di origine africana. Un altro episodio censurato è Il suo topo Venerdì (His Mouse Friday, 1951) a causa degli stereotipi razziali in esso contenuti.\n");
-        post3.setAllegato("https://i.makeagif.com/media/6-06-2015/nc_GSl.gif");
-        post3.setId(2);
-        post3.setUser(utentiRegistratiFactory.getUtentiRegistratiById(2));
-        post3.setPostType(Post.Type.LINK);
-
-        listaPost.add(post1);
-        listaPost.add(post2);
-        listaPost.add(post3);
-
-    }
-
-    public Post getPostById(int id) {
-        for (Post post : this.listaPost) {
-            if (post.getId() == id) {
-                return post;
-            }
-        }
-        return null;
-    }
+    private PostFactory() {}
        
     public List getPostList(UtentiRegistrati user) {
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "Andreea", "1234");
+            
+            String query = "SELECT post.*, postType.nome"
+                            + " FROM post "
 
-        List<Post> listaPost = new ArrayList<Post>();
+                            + "JOIN postType ON post.tipo = postType.id "
 
-        for (Post post : this.listaPost) {
-            if (post.getUser().equals(user)) {
-                listaPost.add(post);
+                            + "WHERE idUser = ? OR "
+
+                            + "idGroup IN (SELECT id FROM gruppi "
+
+                                + "JOIN iscrizioni ON Gruppi.id = iscrizioni.idGruppi "
+
+                                + "WHERE idUtenti = ?) "
+
+                            + "ORDER BY post.id DESC" 
+                    ;
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, user.getId());
+            stmt.setInt(2, user.getId());
+            
+           
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            List<Post> listaPost = new ArrayList();
+            // ciclo sulle righe restituite
+            while (res.next()) {
+                Post post = new Post();
+                
+                post.setContent(res.getString("contenuto"));
+                post.setAllegato(res.getString("allegato"));
+                post.setId(res.getInt("id"));
+                post.setUser(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(res.getInt("autore")));
+                post.setPostType(postTypeFromString(res.getString("nome")));
+                listaPost.add(post);          
             }
+             
+            stmt.close();
+            conn.close();
+            
+            return listaPost;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return listaPost;
+        return null;
+       
     }
     
+        public List getPostListByGroup(Gruppi gruppo) {
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "Andreea", "1234");
+            
+            String query = "SELECT post.*, postType.nome"
+                            + " FROM post "
+
+                            + "JOIN postType ON post.tipo = postType.id "
+
+                            + "WHERE idGroup = ? "
+
+                            + "ORDER BY post.id DESC" 
+                    ;
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, gruppo.getId());
+             
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            List<Post> listaPost = new ArrayList();
+            // ciclo sulle righe restituite
+            while (res.next()) {
+                Post post = new Post();
+             
+                post.setContent(res.getString("contenuto"));
+                post.setAllegato(res.getString("allegato"));
+                post.setId(res.getInt("id"));
+                post.setUser(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(res.getInt("autore")));
+                post.setPostType(postTypeFromString(res.getString("nome")));
+                listaPost.add(post);          
+            }
+             
+            stmt.close();
+            conn.close();
+            
+            return listaPost;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+       
+    }
+        
+        
     public void setConnectionString(String s){
 	this.connectionString = s;
     }
@@ -92,4 +143,20 @@ public class PostFactory {
 	return this.connectionString;
     }
     
+     private Post.Type postTypeFromString(String type){    
+        if(type.equals("IMAGE"))
+            return Post.Type.IMAGE;
+        if(type.equals("LINK"))
+            return Post.Type.LINK;
+        return Post.Type.TEXT;
+    }
+    
+        private int postTypeFromEnum(Post.Type type){
+            if(type == Post.Type.TEXT)
+                    return 1;
+            else if(type == Post.Type.IMAGE)
+                    return 2;
+            else 
+                return 3;
+        }
 }

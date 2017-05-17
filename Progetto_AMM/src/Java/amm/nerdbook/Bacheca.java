@@ -5,6 +5,8 @@
  */
 package amm.nerdbook;
 
+import amm.nerdbook.Classi.Gruppi;
+import amm.nerdbook.Classi.GruppiFactory;
 import amm.nerdbook.Classi.Post;
 import amm.nerdbook.Classi.PostFactory;
 import amm.nerdbook.Classi.UtentiRegistrati;
@@ -42,21 +44,42 @@ public class Bacheca extends HttpServlet {
         if(session != null && session.getAttribute("loggedIn") != null && session.getAttribute("loggedIn").equals(true)){
             String paramUser = request.getParameter("user");
             int userId;
+            int idGroup;
+            String paramGroup = request.getParameter("group");
             
-          
+            if(paramGroup != null){
+                idGroup = Integer.parseInt(paramGroup);
+            }else{
+                idGroup = -1;
+            }
+            int loggedUserID = (Integer)session.getAttribute("loggedId");
+            UtentiRegistrati loggedUser = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(loggedUserID);
             if(paramUser != null){
                 userId = Integer.parseInt(paramUser);
             }else{
-                userId = (Integer)session.getAttribute("loggedId");
+                userId = loggedUserID;
             }
-                
+ 
             UtentiRegistrati user = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userId);
            
-            if(user != null ){
-                request.setAttribute("user", user);
-                List<Post> posts =PostFactory.getInstance().getPostList(user);
+            if(user != null){
+                List<Post> posts;
+                if(idGroup != -1 ){
+                    Gruppi gruppo = GruppiFactory.getInstance().getGruppiById(idGroup);
+                    posts =PostFactory.getInstance().getPostListByGroup(gruppo);
+                    request.setAttribute("gruppo", gruppo);
+                    
+                }else{
+                    posts =PostFactory.getInstance().getPostList(user);
+                    request.setAttribute("user", user);               
+                }
                 request.setAttribute("posts", posts);
+                List<UtentiRegistrati> amici =UtentiRegistratiFactory.getInstance().getListaAmiciByUser(loggedUser);
+                request.setAttribute("amici", amici);
+                List<Gruppi> gruppi =GruppiFactory.getInstance().getGruppiByUser(loggedUser);
+                request.setAttribute("gruppi", gruppi);
                 request.getRequestDispatcher("bacheca.jsp").forward(request, response);
+                
             }else{
                 response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             }   

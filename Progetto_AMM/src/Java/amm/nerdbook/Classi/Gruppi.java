@@ -10,10 +10,12 @@ package amm.nerdbook.Classi;
  * @author Andreea
  */
 public class Gruppi {
+
     private int id;
     private String nome;
     private String urlImmagine;
     private String connectionString;
+    private int amministratore;
     
     public Gruppi(){
         id = 0;
@@ -76,5 +78,17 @@ public class Gruppi {
     public void setConnectioString(String connectionString) {
         this.connectionString = connectionString;
     }
-    
+        /**
+     * @return the amministratore
+     */
+    public int getAmministratore() {
+        return amministratore;
+    }
+
+    /**
+     * @param amministratore the amministratore to set
+     */
+    public void setAmministratore(int amministratore) {
+        this.amministratore = amministratore;
+    }
 }

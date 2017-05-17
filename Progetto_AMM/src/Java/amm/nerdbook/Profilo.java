@@ -5,10 +5,13 @@
  */
 package amm.nerdbook;
 
+import amm.nerdbook.Classi.Gruppi;
+import amm.nerdbook.Classi.GruppiFactory;
 import amm.nerdbook.Classi.UtentiRegistrati;
 import amm.nerdbook.Classi.UtentiRegistratiFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -41,6 +44,10 @@ public class Profilo extends HttpServlet {
             
             UtentiRegistrati user = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(loggedId);
             request.setAttribute("loggedUser", user);
+            List<UtentiRegistrati> amici =UtentiRegistratiFactory.getInstance().getListaAmiciByUser(user);
+            request.setAttribute("amici", amici);
+            List<Gruppi> gruppi =GruppiFactory.getInstance().getGruppiByUser(user);
+            request.setAttribute("gruppi", gruppi);
             request.getRequestDispatcher("profilo.jsp").forward(request, response);
             
         }else{

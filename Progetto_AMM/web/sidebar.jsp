@@ -12,26 +12,27 @@
             <div id="user">                
                 <h3>Utenti</h3>
                 <ul>
-                    <li>
-                        <img alt="Foto" src="img/bunny.jpg">
-                        <a href="Bacheca?user=0">Bugs Bunny</a>
-                    </li>
-                    <li>
-                        <img alt="Foto" src="img/images.jpg">
-                        <a href="Bacheca?user=1">Deadpool</a>
-                    </li>
-                    <li>
-                        <img alt="Foto" src="img/images1.jpg">
-                        <a href="Bacheca?user=2">Jerry</a>
-                    </li>
-                </ul>      
+                    <c:forEach var="user" items="${amici}">
+                        <li>
+                            <img alt ="Foto" src="${user.urlFotoProfilo}"/> 
+                            <a href="Bacheca?user=${user.id}">${user.nome} ${user.cognome}</a> 
+                        </li>        
+                    </c:forEach>    
+                </ul>
+                
             </div>
+            
 
             <div id="group">
                 <h3>Gruppi</h3>
                 <ul>
-                    <li><img alt="Foto" src="img/cn.png">CartoonNetwork</li>
-                    <li><img alt="Foto" src="img/marvel.jpg">Marvel</li>
+                    <c:forEach var="group" items="${gruppi}">
+                        <li>
+                            <img alt ="Foto" src="${group.urlImmagine}"/> 
+                            <a href="Bacheca?group=${group.id}">${group.nome}</a>                            
+                        </li>                                 
+                    </c:forEach>  
                 </ul>
+
             </div>       
 </div>

@@ -63,19 +63,27 @@
         <div id="bacheca">
             <c:forEach var="post" items="${posts}">
                 <div class="post">
-                    <c:choose>
-                        <c:when test="${post.postType == 'TEXT'}">
-                            <p>${post.content}</p>
-                        </c:when>
-                        <c:when test="${post.postType == 'IMAGE'}">
-                            <p>${post.content}</p>
-                            <img alt="Foto" src="${post.allegato}">                     
-                        </c:when>
-                        <c:when test="${post.postType == 'LINK'}">
-                            <p>${post.content}</p>
-                            <a href="${post.allegato}">${post.allegato}</a> 
-                        </c:when>
-                    </c:choose>  
+                    <div class="autore">                      
+                        <img alt ="Foto" src="${post.user.urlFotoProfilo}"/> 
+                        <p>${post.user.nome} ${post.user.cognome}</p> 
+                    </div>
+                    
+                    <div>
+                        <c:choose>
+                            <c:when test="${post.postType == 'TEXT'}">
+                                <p>${post.content}</p>
+                            </c:when>
+                            <c:when test="${post.postType == 'IMAGE'}">
+                                <p>${post.content}</p>
+                                <img alt="Foto" src="${post.allegato}">                     
+                            </c:when>
+                            <c:when test="${post.postType == 'LINK'}">
+                                <p>${post.content}</p>
+                                <a href="${post.allegato}">${post.allegato}</a> 
+                            </c:when>
+                        </c:choose>  
+                    </div>
+
                 </div> 
             </c:forEach>
       </div>

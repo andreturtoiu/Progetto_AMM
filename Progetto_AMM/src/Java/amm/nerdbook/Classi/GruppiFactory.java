@@ -5,7 +5,13 @@
  */
 package amm.nerdbook.Classi;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -25,31 +31,100 @@ public class GruppiFactory {
     return singleton;
     }
     
-    private ArrayList<Gruppi> listaGruppi = new ArrayList<Gruppi>();
     
-    private GruppiFactory() {
-        //Creo Gruppi
-
-        //CartoonNetwork
-        Gruppi gruppo1 = new Gruppi();
-        gruppo1.setId(0);
-        gruppo1.setNome("CartoonNetwork");
-        gruppo1.setUrlImmagine("img/cn.png");
-
-        //Marvel
-        Gruppi gruppo2 = new Gruppi();
-        gruppo2.setId(1);
-        gruppo2.setNome("Marvel");
-        gruppo2.setUrlImmagine("img/marvel.jpg");
-
-        listaGruppi.add(gruppo1);
-        listaGruppi.add(gruppo2);
-    }
+    
+    private GruppiFactory() {}
+    
     public void setConnectionString(String s){
 	this.connectionString = s;
     }
     public String getConnectionString(){
 	return this.connectionString;
     }
+    public Gruppi getGruppiById(int id){
+        
+         try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "Andreea", "1234");
+            
+            String query = "SELECT * FROM gruppi"
+                    + " WHERE id = ?"     
+                    ;
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, id);
+
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+     
+            // ciclo sulle righe restituite
+            if (res.next()) {
+                Gruppi gruppo = new Gruppi();  
+                
+                gruppo.setId(res.getInt("id"));
+                gruppo.setNome(res.getString("nome"));
+                gruppo.setUrlImmagine(res.getString("urlImmagine"));
+                gruppo.setAmministratore(res.getInt("amministratore"));
+                stmt.close();
+                conn.close();
+                
+                            
+                return gruppo;
+            }
+             
+            stmt.close();
+            conn.close();
+            
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     
+    }
+    
+    public List<Gruppi> getGruppiByUser(UtentiRegistrati user){
+         try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "Andreea", "1234");
+            
+            String query = "SELECT * FROM gruppi "
+                            + "JOIN iscrizioni ON gruppi.id = iscrizioni.idGruppi "
+                    + " WHERE idUtenti= ?"     
+                    ;
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, user.getId());
+
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            List<Gruppi> gruppiList = new ArrayList();
+            // ciclo sulle righe restituite
+            while (res.next()) {
+                Gruppi gruppo = new Gruppi();  
+                
+                gruppo.setId(res.getInt("id"));
+                gruppo.setNome(res.getString("nome"));
+                gruppo.setUrlImmagine(res.getString("urlImmagine"));
+                gruppo.setAmministratore(res.getInt("amministratore"));
+                
+                gruppiList.add(gruppo);
+            }
+            
+             
+            stmt.close();
+            conn.close();
+            return gruppiList;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;                 
+    }
 }

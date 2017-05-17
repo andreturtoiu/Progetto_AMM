@@ -111,7 +111,7 @@ header{
  
 }
 
-#sideBar, #bacheca,#divBody ,.formDati, .formL, #nuovoPost1, #fraseDescrizione{
+#sideBar,#divBody ,.formDati, .formL, #nuovoPost1, #fraseDescrizione, .post{
     border: 2px solid white;
     background-color: #b3ccff;
     border-radius: 10px 10px 10px 10px;
@@ -124,6 +124,14 @@ header{
 
 #sideBar img{
     width: 40px;
+}
+.autore img{
+    width: 40px;
+    float:left;
+}
+
+.autore{
+    height: 50px;    
 }
 
 .userName img{
@@ -205,6 +213,7 @@ input,textArea{
     background-image: url('img/unnamed.png');
     background-repeat: no-repeat;
 }
+
 
 
 @media only screen and (min-width: 1024px){
