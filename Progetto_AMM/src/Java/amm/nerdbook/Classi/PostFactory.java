@@ -89,51 +89,51 @@ public class PostFactory {
     }
     
         public List getPostListByGroup(Gruppi gruppo) {
-        try {
-            // path, username, password
-            Connection conn = DriverManager.getConnection(connectionString, "Andreea", "1234");
-            
-            String query = "SELECT post.*, postType.nome"
-                            + " FROM post "
+            try {
+                // path, username, password
+                Connection conn = DriverManager.getConnection(connectionString, "Andreea", "1234");
 
-                            + "JOIN postType ON post.tipo = postType.id "
+                String query = "SELECT post.*, postType.nome"
+                                + " FROM post "
 
-                            + "WHERE idGroup = ? "
+                                + "JOIN postType ON post.tipo = postType.id "
 
-                            + "ORDER BY post.id DESC" 
-                    ;
-            
-            // Prepared Statement
-            PreparedStatement stmt = conn.prepareStatement(query);
-            
-            // Si associano i valori
-            stmt.setInt(1, gruppo.getId());
-             
-            // Esecuzione query
-            ResultSet res = stmt.executeQuery();
-            List<Post> listaPost = new ArrayList();
-            // ciclo sulle righe restituite
-            while (res.next()) {
-                Post post = new Post();
-             
-                post.setContent(res.getString("contenuto"));
-                post.setAllegato(res.getString("allegato"));
-                post.setId(res.getInt("id"));
-                post.setUser(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(res.getInt("autore")));
-                post.setPostType(postTypeFromString(res.getString("nome")));
-                listaPost.add(post);          
+                                + "WHERE idGroup = ? "
+
+                                + "ORDER BY post.id DESC" 
+                        ;
+
+                // Prepared Statement
+                PreparedStatement stmt = conn.prepareStatement(query);
+
+                // Si associano i valori
+                stmt.setInt(1, gruppo.getId());
+
+                // Esecuzione query
+                ResultSet res = stmt.executeQuery();
+                List<Post> listaPost = new ArrayList();
+                // ciclo sulle righe restituite
+                while (res.next()) {
+                    Post post = new Post();
+
+                    post.setContent(res.getString("contenuto"));
+                    post.setAllegato(res.getString("allegato"));
+                    post.setId(res.getInt("id"));
+                    post.setUser(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(res.getInt("autore")));
+                    post.setPostType(postTypeFromString(res.getString("nome")));
+                    listaPost.add(post);          
+                }
+
+                stmt.close();
+                conn.close();
+
+                return listaPost;
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-             
-            stmt.close();
-            conn.close();
-            
-            return listaPost;
-        } catch (SQLException e) {
-            e.printStackTrace();
+            return null;
+
         }
-        return null;
-       
-    }
         
         
     public void setConnectionString(String s){
@@ -151,12 +151,52 @@ public class PostFactory {
         return Post.Type.TEXT;
     }
     
-        private int postTypeFromEnum(Post.Type type){
-            if(type == Post.Type.TEXT)
-                    return 1;
-            else if(type == Post.Type.IMAGE)
-                    return 2;
+    private int postTypeFromEnum(Post.Type type){
+        if(type == Post.Type.TEXT)
+                return 1;
+        else if(type == Post.Type.IMAGE)
+                return 2;
+        else 
+            return 3;
+    }
+    
+    public void newPost(Post post , UtentiRegistrati utenteDest, Gruppi groupDest){
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "Andreea", "1234");
+            
+            String query = "INSERT INTO post(id, autore,contenuto ,allegato, tipo, idGroup, idUser )" +
+                           "VALUES (default,?,?,?,?,?,?)"
+                    ;
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, post.getUser().getId());
+            stmt.setString(2, post.getContent());
+            stmt.setString(3, post.getAllegato());
+            stmt.setInt(4,postTypeFromEnum(post.getPostType()));
+            if(groupDest != null)
+                stmt.setInt(5, groupDest.getId());
             else 
-                return 3;
+                stmt.setString(5, null);
+            
+            if(utenteDest != null)
+                stmt.setInt(6, utenteDest.getId());
+            else 
+                stmt.setString(6, null);
+             
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+   
+            stmt.close();
+            conn.close();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+       
+    }
+        
 }
