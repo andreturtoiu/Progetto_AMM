@@ -68,10 +68,13 @@ public class Bacheca extends HttpServlet {
                     Gruppi gruppo = GruppiFactory.getInstance().getGruppiById(idGroup);
                     posts =PostFactory.getInstance().getPostListByGroup(gruppo);
                     request.setAttribute("gruppo", gruppo);
-                    
+                    request.setAttribute("tipoBacheca","bachecaGruppo");
+                    request.setAttribute("nomeDest",gruppo.getNome());
                 }else{
                     posts =PostFactory.getInstance().getPostList(user);
-                    request.setAttribute("user", user);               
+                    request.setAttribute("user", user);     
+                    request.setAttribute("tipoBacheca","bachecaUtente");
+                    request.setAttribute("nomeDest",user.getNome());
                 }
                 request.setAttribute("posts", posts);
                 List<UtentiRegistrati> amici =UtentiRegistratiFactory.getInstance().getListaAmiciByUser(loggedUser);

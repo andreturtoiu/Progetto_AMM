@@ -5,12 +5,18 @@
  */
 package amm.nerdbook;
 
+import amm.nerdbook.Classi.Gruppi;
+import amm.nerdbook.Classi.Post;
+import amm.nerdbook.Classi.PostFactory;
+import amm.nerdbook.Classi.UtentiRegistrati;
+import amm.nerdbook.Classi.UtentiRegistratiFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -27,22 +33,81 @@ public class NewPost extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    
+     /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet NewPost</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet NewPost at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        
+        HttpSession session = request.getSession(false);
+        
+        //se la sessione esiste ed esiste anche l'attributo loggedIn impostato a true
+        if(session!=null && 
+           session.getAttribute("loggedIn")!=null &&
+           session.getAttribute("loggedIn").equals(true)){
+            /*Due possibilità:
+            *   -devo ancora scrivere un messaggio (nessun post in request)
+            *   -ho gia scritto il messaggio e devo confermare (esiste un post in request)
+            */
+            if(request.getParameter("thereIsPost")!=null)
+            {
+                /*Altre due possibilità
+                *   -aspetto conferma da jsp
+                *   -devo salvare su DB
+                */
+                int utenteD = -1;
+                int gruppoD = -1;
+                       
+                if(request.getParameter("tipoBacheca").equals("utente")){
+                    utenteD = Integer.parseInt(request.getParameter("dest"));
+                }else{
+                    gruppoD = Integer.parseInt(request.getParameter("dest"));
+                }
+                    
+                
+                
+                String content = request.getParameter("textPost");
+                String type = request.getParameter("postType");
+                String contentUrl = request.getParameter("urlAllegato");
+                                
+                Post post = new Post();
+                post.setContent(content);
+
+                switch(type){
+                    case "textPost":
+                        post.setPostType(Post.Type.TEXT);
+                        break;
+                    case "immaginePost":
+                        post.setPostType(Post.Type.IMAGE);
+                        break;
+                    default : 
+                        post.setPostType(Post.Type.LINK);              
+                }
+                post.setAllegato(contentUrl);
+                
+                post.setUser(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById((Integer)session.getAttribute("loggedId")));
+                PostFactory.getInstance().newPost(post,utenteD, gruppoD);
+                request.getRequestDispatcher("Bacheca").forward(request, response);
+            
+            }
+            else{
+                request.getRequestDispatcher("Bacheca").forward(request, response);
+                return;
+            }
         }
-    }
+        else{
+            request.getRequestDispatcher("Login").forward(request, response);
+        }
+ }       
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

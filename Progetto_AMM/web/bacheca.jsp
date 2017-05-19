@@ -23,16 +23,25 @@
         
         <div id ="nuovoPost1">
             <form action="NewPost.jsp">
-                <input type="hidden" name="userB" value="${user.nome}"/>
+                <c:choose>
+                    <c:when test="${tipoBacheca == 'bachecaUtente'}">
+                        <input type="hidden" name="dest" value="${user.id}"/>                        
+                    </c:when>
+
+                    <c:when test="${tipoBacheca == 'bachecaGruppo'}">
+                        <input type="hidden" name="dest" value="${gruppo.id}"/>                        
+                    </c:when>
+                </c:choose>
+                <input type="hidden" name="nomeDest" value="${nomeDest}"/>
                 <div id="nuovoPost">
                     <div id="postContent">
                         <div>
                             <label for="textPost">Nuovo post</label>
-                            <textarea name="textPost" id="textPost" value ="${newPost}" ></textarea>
+                            <textarea name="textPost" id="textPost" value ="textPost" ></textarea>
                         </div>
                         <div>
                             <label for="link">Allegato</label>
-                            <input type="url" name="urlAllegato" id="link" value ="${newUrl}"/>
+                            <input type="url" name="urlAllegato" id="link"/>
                                   
                         </div>
                     </div>
@@ -47,7 +56,7 @@
                         </div>
                     </div>
 
-                    <button type="submit">Invia</button>
+                            <button type="submit" name ="thereIsPost" value="needConfirm">Invia</button>
                 </div>            
             </form>
         </div>

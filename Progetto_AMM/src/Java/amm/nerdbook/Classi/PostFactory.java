@@ -160,7 +160,7 @@ public class PostFactory {
             return 3;
     }
     
-    public void newPost(Post post , UtentiRegistrati utenteDest, Gruppi groupDest){
+    public void newPost(Post post , int utenteDest, int groupDest){
         try {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "Andreea", "1234");
@@ -177,18 +177,18 @@ public class PostFactory {
             stmt.setString(2, post.getContent());
             stmt.setString(3, post.getAllegato());
             stmt.setInt(4,postTypeFromEnum(post.getPostType()));
-            if(groupDest != null)
-                stmt.setInt(5, groupDest.getId());
+            if(groupDest != -1)
+                stmt.setInt(5, groupDest);
             else 
                 stmt.setString(5, null);
             
-            if(utenteDest != null)
-                stmt.setInt(6, utenteDest.getId());
+            if(utenteDest != -1)
+                stmt.setInt(6, utenteDest);
             else 
                 stmt.setString(6, null);
              
             // Esecuzione query
-            ResultSet res = stmt.executeQuery();
+            stmt.execute();
    
             stmt.close();
             conn.close();
