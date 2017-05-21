@@ -10,7 +10,7 @@
 
 <div id="sideBar">
             <div id="user">                
-                <h3>Utenti</h3>
+                <h3>Amici</h3>
                 <ul>
                     <c:forEach var="user" items="${amici}">
                         <li>

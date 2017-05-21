@@ -10,20 +10,26 @@ package amm.nerdbook.Classi;
  * @author Andreea
  */
 public class UtentiRegistrati {
+
     private int id;
     private String nome;
     private String cognome;
+    private String email;
     private String password;
     private String urlFotoProfilo;
     private String fraseDescrizione;
     private String dataNascita;
+	
     public String connectionString;
+	
     public UtentiRegistrati() {
         id = 0;
-        nome = "";
-        cognome = "";
-        password = "";
-        dataNascita = "";
+        nome = null;
+        cognome = null;
+        password = null;
+		urlFotoProfilo = null;
+		fraseDescrizione = null;
+        dataNascita = null;
     }
     
     public boolean completo(){
@@ -77,6 +83,20 @@ public class UtentiRegistrati {
         this.cognome = cognome;
     }
 
+    
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
     /**
      * @return the password
      */
@@ -132,6 +152,10 @@ public class UtentiRegistrati {
     public void setDataNascita(String dataNascita) {
         this.dataNascita = dataNascita;
     }
+	
+	public boolean confirmPass(String password){
+		return this.password.equals(password);
+	}
 
     /**
      * @return the connectionString

@@ -20,7 +20,7 @@
         <jsp:include page="sidebar.jsp"/>
 
         <div class="formDati">
-            <form action="Dati.jsp" method="post">
+            <form action="Profilo" method="post">
                 <label for="firstname">Nome:</label>
                 <input type="text" name="firstname" id ="firstname" value ="${loggedUser.nome}">
 
@@ -29,7 +29,10 @@
 
                 <label for="profileImg">Immagine profilo</label>
                 <input type="url" id="profileImg" name="profilePic" value ="${loggedUser.urlFotoProfilo}"/>
-
+                
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" value ="${loggedUser.email}"/>
+                
                 <label for="psw"> Password:</label>
                 <input type="password" name="psw" id="psw" value ="${loggedUser.password}">
 
@@ -40,10 +43,19 @@
                 <textarea name="textPost" id="textPost" >${loggedUser.fraseDescrizione}</textarea>
 
                 <label for="bDay">Birthday:</label>
-                <input type="date" name="bDay" id ="bDay">
+                <input type="date" name="bDay" id ="bDay" value ="${loggedUser.dataNascita}">
                 <br/>
-                <button type="submit">Invia</button>                                                     
-            </form>                    
+                <button type="submit"name="update">Invia</button>  
+
+                
+            </form>  
+                
+            <form action="confirmDelete.jsp" method = "post">
+                    <div id ="deleteUser">
+                        <button type="submit" name ="deleteAccount">Cancella Account</button>    
+                    </div>
+            </form>
+
         </div>  
 
     </body>

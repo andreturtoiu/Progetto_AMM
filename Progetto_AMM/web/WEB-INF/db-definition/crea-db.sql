@@ -59,34 +59,48 @@ CREATE TABLE amicizie(
 /*
 Inserimento dei tre utenti
 */
-INSERT INTO utenti (id, nome, cognome,password, frasePresentazione,urlProfilo, dataNascita) 
+INSERT INTO utenti (id, nome, cognome,email,password, frasePresentazione,urlProfilo, dataNascita) 
 VALUES (default,
 		'Bugs',
 		'Bunny',
+		'bugsbunny@bugs.com',
 		'123',
 		'Ho le orecchie più belle del mondo',
 		'img/bunny.jpg',
 		'1940-07-27'
 );
 		
-INSERT INTO utenti (id, nome, cognome,password, frasePresentazione,urlProfilo, dataNascita) 
+INSERT INTO utenti (id, nome, cognome,email,password, frasePresentazione,urlProfilo, dataNascita) 
 VALUES (default,
 		'Deadpool',
 		NULL,
+		'dead@pool.com',
 		'456',
 		NULL,
 		'img/images.jpg',
 		'1991-02-07'
 );
 
-INSERT INTO utenti (id, nome, cognome,password, frasePresentazione,urlProfilo, dataNascita) 
+INSERT INTO utenti (id, nome, cognome,email,password, frasePresentazione,urlProfilo, dataNascita) 
 VALUES (default,
 		'Jerry',
 		NULL,
+		'jerry@tom.com',
 		'789',
-		'img/images1.jpg',
 		'Sono un topo obbediente',
+		'img/images1.jpg',
 		'1940-01-01'
+);
+
+INSERT INTO utenti (id, nome, cognome,email,password, frasePresentazione,urlProfilo, dataNascita) 
+VALUES (default,
+		'Mickey',
+		'Mouse',
+		'mickey@mouse.com',
+		'123',
+		'Ho una coda di topo spettacolare',
+		'img/mickey.png',
+		'1928-01-01'
 );
 		
 /*
@@ -107,6 +121,15 @@ VALUES (default,
         'img/marvel.jpg',
         2
 );
+
+INSERT INTO gruppi(id, nome, urlImmagine ,amministratore)
+VALUES (default,
+        'Disney ClubHouse',
+        'img/disney.jpg',
+        4
+);
+
+
 
 
 /*
@@ -173,10 +196,18 @@ VALUES (default,
         'La Ofcom ha spiegato che Tom & Jerry è un cartone animato vintage realizzato in un periodo in cui il rischio legato al fumo non era ancora stato attentamente studiato e che questa era un''ottima ragione per chiedere alla Turner di prendere provvedimenti. Tom & Jerry però sono stati censurati altre volte. Molte scene di altri episodi contenevano dei blackface, cioè quando esplodeva qualcosa o il viso di Tom, Jerry o altri personaggi si coprivano di fango, essi diventavano come delle persone africane e ciò poteva risultare offensivo per le persone di origine africana. Un altro episodio censurato è Il suo topo Venerdì (His Mouse Friday, 1951) a causa degli stereotipi razziali in esso contenuti.',
         'https://i.makeagif.com/media/6-06-2015/nc_GSl.gif',
         3,
-        2,
+        1,
         NULL
 );
-
+INSERT INTO post(id, autore,contenuto ,allegato, tipo, idGroup, idUser )
+VALUES (default,
+        4,
+        '“Non te ne andare, ti prego. Nessuno finora è rimasto così a lungo con me. Ma se vuoi andartene, puoi farlo, Io mi ricorderò di te. Io ricordo tutti quelli che se ne vanno.”',
+        'img/walt.jpg',
+        2,
+        3,
+        NULL
+);
 
 /*
 Inserimento delle iscrizioni
@@ -185,8 +216,9 @@ Inserimento delle iscrizioni
 INSERT INTO iscrizioni(idGruppi, idUtenti)
 VALUES (1,1),
         (1,3),
-        (2,2);
-
+        (2,2),
+		(3,4),
+		(3,1);
 
 
 /*
@@ -195,9 +227,12 @@ Inserimento delle amicizie
 
 INSERT INTO amicizie(idUtente1, idUtente2)
 VALUES (2,1),
-        (1,1),
         (3,2),
-        (3,1);
+        (3,1),
+		(4,1),
+		(4,2),
+		(4,3);
+		
 	   
 	   
 	   

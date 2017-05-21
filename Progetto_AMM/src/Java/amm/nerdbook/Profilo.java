@@ -34,21 +34,42 @@ public class Profilo extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession  session = request.getSession(false);
-        
+        UtentiRegistrati user;
         if(session != null && session.getAttribute("loggedIn") != null && session.getAttribute("loggedIn").equals(true)){
             int loggedId = (Integer)session.getAttribute("loggedId");
-            
-            UtentiRegistrati user = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(loggedId);
-            request.setAttribute("loggedUser", user);
-            List<UtentiRegistrati> amici =UtentiRegistratiFactory.getInstance().getListaAmiciByUser(user);
-            request.setAttribute("amici", amici);
-            List<Gruppi> gruppi =GruppiFactory.getInstance().getGruppiByUser(user);
-            request.setAttribute("gruppi", gruppi);
-            request.getRequestDispatcher("profilo.jsp").forward(request, response);
+
+        //Cancellazione account
+        if(request.getParameter("deleteAccount")!=null){
+            UtentiRegistratiFactory.getInstance().deleteUser(loggedId);
+            request.getRequestDispatcher("Login?logout=true").forward(request,response);
+            return;
+        }
+
+        //Update profilo
+        if(request.getParameter("update")!=null){
+            user = new UtentiRegistrati();
+            user.setNome(request.getParameter("firstname"));
+            user.setCognome(request.getParameter("lastname"));
+            user.setPassword(request.getParameter("psw"));
+            user.setUrlFotoProfilo(request.getParameter("profilePic"));         
+            user.setEmail(request.getParameter("email"));
+            user.setFraseDescrizione(request.getParameter("textPost"));
+            user.setDataNascita(request.getParameter("bDay"));
+            user.setId(loggedId);
+            UtentiRegistratiFactory.getInstance().updateProfilo(user);
+        }
+
+        user = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(loggedId);
+        request.setAttribute("loggedUser", user);
+        List<UtentiRegistrati> amici =UtentiRegistratiFactory.getInstance().getListaAmiciByUser(loggedId);
+        request.setAttribute("amici", amici);
+        List<Gruppi> gruppi =GruppiFactory.getInstance().getGruppiByUser(user);
+        request.setAttribute("gruppi", gruppi);
+        request.getRequestDispatcher("profilo.jsp").forward(request, response);
             
         }else{
              try (PrintWriter out = response.getWriter()) {
@@ -67,7 +88,7 @@ public class Profilo extends HttpServlet {
           
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
