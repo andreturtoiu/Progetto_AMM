@@ -74,7 +74,7 @@ label{
     
 }
 #postType label, #postType input{
-    display: inline;    
+    display: inline;
 }
 
 nav ol, nav li{
@@ -83,8 +83,8 @@ nav ol, nav li{
 }
 
 nav li{
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 nav li.active{
@@ -94,7 +94,9 @@ nav li.active{
 nav{
     background-color: #b3ccff;
     text-align: left;
-    box-shadow: 0 0 25px rgba(0,0,0,.2);
+    float: left;
+    height: 70px;
+    width: 360px;
 }
 
 header{
@@ -107,8 +109,8 @@ header{
     position: fixed;
     top: 0px;
     left: 0px;
-    right: 0px; 
- 
+    right: 0px;
+    height: 70px;
 }
 
 #sideBar,#divBody ,.formDati, .formL, #nuovoPost1, #fraseDescrizione, .post{
@@ -213,8 +215,22 @@ input,textArea{
     background-image: url('img/unnamed.png');
     background-repeat: no-repeat;
 }
+.post > img{
+    width: 80%;
+}
 
+.inOut img{
+    width: 50px;
+    border-radius: 50%;
+    float: right;
+}
 
+.inOut{
+    margin-right: 10px;
+    float: right;
+    height: 50px;
+    width: 55px;
+}
 
 @media only screen and (min-width: 1024px){
     #sideBar{
@@ -247,16 +263,18 @@ input,textArea{
         margin-left: auto;
         margin-right: auto;
     }
-    a.inOut{
-        margin-left: 500px;
-    }
+
+    
     
     #fraseDescrizione{
         margin-top: 100px;
-        width: 305px;
+        width: 305px; 
         margin-left: auto;
         margin-right: auto;
         float: left;
+    }
+    #fraseDescrizione img {
+         height: 100px;
     }
     
     #nuovoPost1{
@@ -279,7 +297,7 @@ input,textArea{
     #sideBar{
        float: left;
        margin-top: 100px;
-       width: 300px;
+       width: 350px;
        height: 350px;
    }
    #bacheca{
@@ -287,47 +305,59 @@ input,textArea{
        float: left;
    }
    .formDati{
-        width: 300px;
+        width: 350px;
         float: left;
         margin-top: 100px;
     }
     
     .formL{
-        width: 300px;
-        margin-top: 100px;    
+        width: 350px;
+        margin-top: 10px;    
     }
     
     #sommario{
         margin-top: 150px;
     }
     
-    a.inOut{
+    .inOut{
         margin-right: 10px;
-        margin-left: 200px;
+        float: right;
     }
     
      #fraseDescrizione{
-        margin-top: 100px;
-        width: 305px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-top: 10px;
+        width: 350px;
         float: left;
-        height: 150px;
+        height: 300px;
     }
-    
+    #fraseDescrizione img {
+         height: 60px;
+    }
     #nuovoPost1{
         float: left;
-        width: 305px;
+        width: 350px;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 100px;
+        margin-top: 10px;
         height: 350px;
     }
+    
+    .post{
+        width: 350px;
+    }
+
 }
 
 
 @media only screen and (max-width: 480px){
 
+    header{
+        height: 100px;
+    }
+    
+    nav{
+        width: 250px;
+    }
     nav li{
         display: block;
     }
@@ -359,6 +389,23 @@ input,textArea{
     #nuovoPost1{
         float: left;
         width: 350px;
+        height: 300px;
     }
+    
+    #fraseDescrizione{
+        margin-top: 10px;
+        width: 350px;
+        float: left;
+        height: 300px;
+    }
+    #fraseDescrizione img {
+         height: 60px;
+    }
+    
+    .post{
+        margin-top: 10px;
+        float: left;
+    }
+    
 }
 

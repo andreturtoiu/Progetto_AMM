@@ -12,14 +12,20 @@
     <!-- profilo e bacheca-->
     
     <c:if test ="${pagina =='bacheca' || pagina == 'profilo'}">
-        <nav>
-            <ol>
-                <li><a href="descrizione.jsp" id="nerdbook_style">NerdBook</a></li>
-                <li><a href="Bacheca">Bacheca</a></li> 
-                <li><a href="Profilo">Profilo</a></li>
-                <li><a class="inOut" href="Login?logout=true">Logout</a></li>
-            </ol>
-        </nav>  
+        <div>
+            <nav>
+                <ol>
+                    <li><a href="descrizione.jsp" id="nerdbook_style">NerdBook</a></li>
+                    <li><a href="Bacheca">Bacheca</a></li> 
+                    <li><a href="Profilo">Profilo</a></li>
+                </ol>
+            </nav>
+        </div>  
+        <div class="inOut">
+            <img alt ="Foto" src="${utenteLoggato.urlFotoProfilo}"/>
+            <a href="Login?logout=true">Logout</a>
+        </div>
+        
     </c:if>
 
 
@@ -28,12 +34,16 @@
     </c:if>       
 
     <c:if test="${pagina == 'descrizione'}">
-        <nav>
-           <ol>
-               <li><a href="descrizione.jsp" id="nerdbook_style">NerdBook</a></li>
-               <li><a class="inOut" href="Login">Login</a></li>
-           </ol>
-        </nav>
+        <div>
+            <nav>
+                <ol>
+                    <li><a href="descrizione.jsp" id="nerdbook_style">NerdBook</a></li>
+                </ol>
+             </nav>
+        </div>
+         <div class="inOut">
+            <a href="Login">Login</a>
+        </div>
     </c:if> 
         
 </header>

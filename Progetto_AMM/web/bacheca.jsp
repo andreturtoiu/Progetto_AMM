@@ -60,13 +60,19 @@
                 </div>            
             </form>
         </div>
-             
-        <c:if test="${user.fraseDescrizione != null}">
+        
+        <c:if test="${tipoBacheca == 'bachecaUtente'}">
             <div id="fraseDescrizione">
-                <p> ${user.nome} ${user.cognome } :</p>
-                <p>${user.fraseDescrizione}</p>
-            </div>
-        </c:if>  
+                <img alt ="Foto" src="${user.urlFotoProfilo}"/> 
+                <p> ${user.nome} ${user.cognome } </p>
+                <p>Data di nascita: ${user.dataNascita } </p>
+                <p>E-mail: ${user.email }</p>
+                <c:if test="${user.fraseDescrizione != null}">
+                        <p>Frase descrizione: ${user.fraseDescrizione}</p>  
+                </c:if>  
+            </div>         
+        </c:if>
+        
        
 
         <div id="bacheca">
@@ -77,7 +83,6 @@
                         <p>${post.user.nome} ${post.user.cognome}</p> 
                     </div>
                     
-                    <div>
                         <c:choose>
                             <c:when test="${post.postType == 'TEXT'}">
                                 <p>${post.content}</p>
@@ -91,7 +96,6 @@
                                 <a href="${post.allegato}">${post.allegato}</a> 
                             </c:when>
                         </c:choose>  
-                    </div>
 
                 </div> 
             </c:forEach>
