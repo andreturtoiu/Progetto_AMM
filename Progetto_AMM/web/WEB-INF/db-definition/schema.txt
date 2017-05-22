@@ -35,3 +35,14 @@ id degli utenti  -chave esterna che punta alla tabella degli UTENTI
 Tabella delle AMICIZIE:
 -id utente 1  -chiave esterna che punta alla tabella degli UTENTI
 -id utente 2  -chiave esterna che punta alla tabella degli UTENTI
+
+	
+	Il singolo utente può inserire un post sia sulla propria bacheca, che sulla bacheca dei propri amici e su quella dei gruppi a cui appartiene: si ha quindi una relazione di uno a molti tra utente-post. 
+
+	Un gruppo può contenere più utenti, un utente può essere iscritto a più gruppi. La relazione utente-gruppi è molti a molti.
+
+	Un utente può avere più amici, ed egli può a suo volta essere amico di più utenti. Si ha quindi una relazione molti a molti.
+
+	
+
+	
