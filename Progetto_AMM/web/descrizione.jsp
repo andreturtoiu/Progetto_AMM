@@ -17,7 +17,7 @@
     <body>
         <c:set var="pagina" value="descrizione" scope="request"/>
         <jsp:include page="header.jsp"/>
-        <div id="divBody">
+        <div id="divBodyDescription">
             <div id="sommario">
                 <h2>Sommario</h2>
                 <ul>
@@ -30,12 +30,22 @@
                 <h1>Info generali</h1>
                 <h2>Descrizione</h2>
                 <p id="descrizione">Nerbook è un social network che permette agli utenti di stringere amicizie e di creare e gestire dei gruppi.               </p>
-
                 <h2>Utenti</h2>
-                <h3>1.Utenti registrati</h3>
-                <h3>2.Utente amministratore</h3>
+                <div>
+                    <div class="tipoUtente">
+                        <h3>1.Utenti registrati</h3>
+                        <img alt ="Foto" src="img/utente.png" id="imgUtentiRegistrati"/> 
+                    </div>
+                    
+                    <div class="tipoUtente">
+                        <h3>2.Utente amministratore</h3>
+                        <img alt ="Foto" src="img/master.png" id="imgAmministratore"/>                         
+                    </div>
+                    
+                </div>
+              
 
-                <p id="utenti">   Si avranno due tipologie di utent.<br/>
+                <p id="utenti">   Si avranno due tipologie di utenti.<br/>
                     Un utente registrato può inserire dei post nella sua bacheca o in quella dei suoi amici. Nel caso un utente visiti la bacheca di un altro utente che non è nella lista dei suoi amici, l’applicazione gli permetterà di stringere amicizia. Non è prevista una conferma dell’amicizia. 
                     Una volta stretta l’amicizia, l’utente potrà inserire dei post in bacheca. I gruppi permettono di raccogliere degli utenti, che non siano necessariamente amici fra loro, per condividere informazioni e materiali legati da un comune interesse (un linguaggio di programmazione, una squadra di calcio, un gruppo musicale ecc.). Anche i gruppi hanno la loro bacheca. Ogni volta che un post viene pubblicato sulla bacheca di un gruppo, questo viene replicato anche nella bacheca di tutti gli appartenenti al gruppo.
                     Un utente si iscrive spontaneamente visitando la bacheca del gruppo e richiedendo l’iscrizione. Non è prevista la conferma dell’iscrizione dagli altri appartenenti al gruppo. 

@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 body{
-    background-color: white; 
+        background: linear-gradient(to bottom, #c6d9ff, white);
 }
 
 h1{
@@ -126,6 +126,7 @@ header{
 
 #sideBar img{
     width: 40px;
+    border-radius: 50%;
 }
 .autore img{
     width: 40px;
@@ -191,7 +192,7 @@ input:focus,textArea:focus{
 }
 
 input,textArea{
-    border-color:black;
+    border-color:white;
 }
 
 #loginForm{
@@ -232,14 +233,49 @@ input,textArea{
     width: 55px;
 }
 
-@media only screen and (min-width: 1024px){
-    #sideBar{
-        float: left;
-        margin-top: 100px;
-        width: 250px; 
-        height: 500px;
-    }
 
+#postType input{
+    width: 140px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#postType label{
+    margin-left: 50px;
+}
+#postType label::after, #postType label::before{
+    content: '';
+    white-space: pre;
+}
+
+#cerca{
+   margin-left: 80px;
+}
+
+#sideBar{
+   float: left;
+   margin-top: 100px;
+   width: 350px;
+   height: 615px;
+}
+
+#imgAmministratore, #imgUtentiRegistrati{
+    width: 300px;
+}
+
+#user h3,  #group h3{
+    text-align: center;
+}
+
+.tipoUtente{
+    float: left;
+    width: 50%;
+}
+
+
+
+@media only screen and (min-width: 1024px){
     #bacheca{
         width: 70%;
         float:left;
@@ -272,6 +308,7 @@ input,textArea{
         margin-left: auto;
         margin-right: auto;
         float: left;
+        height: 300px;
     }
     #fraseDescrizione img {
          height: 100px;
@@ -283,6 +320,7 @@ input,textArea{
         width: 305px;
         margin-left: auto;
         margin-right: auto;
+        height: 300px;
     }
     
     #postContent, #postType{
@@ -293,19 +331,12 @@ input,textArea{
 }
 
 @media only screen and (max-width: 1024px) and (min-width: 480px){
-   
-    #sideBar{
-       float: left;
-       margin-top: 100px;
-       width: 350px;
-       height: 350px;
-   }
    #bacheca{
-       width: 68%;
+       width: 83%;
        float: left;
    }
    .formDati{
-        width: 350px;
+        width: 300px;
         float: left;
         margin-top: 100px;
     }
@@ -338,12 +369,12 @@ input,textArea{
         width: 350px;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 10px;
-        height: 350px;
+        margin-top: 100px;
+        height: 300px;
     }
     
     .post{
-        width: 350px;
+        width: 100%;
     }
 
 }
@@ -366,9 +397,7 @@ input,textArea{
         margin-top: 315px;
     }
     #sideBar{
-        margin-top: 170px;
-        width: 350px;
-       
+        margin-top: 170px;  
     }
     
     .formDati{
@@ -390,6 +419,7 @@ input,textArea{
         float: left;
         width: 350px;
         height: 300px;
+        margin-top: 10px;
     }
     
     #fraseDescrizione{

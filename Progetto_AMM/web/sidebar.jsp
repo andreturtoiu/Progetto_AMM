@@ -9,7 +9,10 @@
 <!DOCTYPE html>
 
 <div id="sideBar">
-            <div id="user">                
+  
+        <input type="text" name="cerca" id="cerca" value="Cerca..."/>
+
+            <div id="user">   
                 <h3>Amici</h3>
                 <ul>
                     <c:forEach var="user" items="${amici}">

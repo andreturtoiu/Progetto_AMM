@@ -47,13 +47,17 @@
                     </div>
                     <div id="postType">
                         <div>
-                            <label for="immaginePost">Immagine</label>
-                            <input type="radio" name="postType" value="immaginePost" id="immaginePost">
+                          <label for="immaginePost">Immagine</label>  
+                          <label for="LinkType">Link</label>  
                         </div>
+                        
                         <div>
-                            <label for="LinkType">Link</label>
+                            <input type="radio" name="postType" value="immaginePost" id="immaginePost">  
                             <input type="radio" name="postType" value="LinkType" id="LinkType">
                         </div>
+
+                        
+
                     </div>
 
                             <button type="submit" name ="thereIsPost" value="needConfirm">Invia</button>
