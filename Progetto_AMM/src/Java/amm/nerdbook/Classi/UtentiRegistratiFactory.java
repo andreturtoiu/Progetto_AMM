@@ -294,7 +294,65 @@ public class UtentiRegistratiFactory {
             e.printStackTrace();
         }
 
-    }    
+    }  
+    
+     public List getAmiciList(String name, int id) {
+        List<UtentiRegistrati> listaAmici = new ArrayList<UtentiRegistrati>();
+        
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "Andreea", "1234");
+            
+            String query =
+                            "SELECT * FROM UTENTI "  
+                    
+                            +"WHERE ( LOWER(nome) LIKE LOWER(?) OR LOWER(cognome) LIKE LOWER(?) ) AND id in "
+                           
+                            + "(SELECT id FROM Utenti JOIN Amicizie ON Utenti.id = Amicizie.idUtente1 WHERE Amicizie.idUtente2 = ? "
+                            
+                            +"UNION " 
+                                
+                            +"SELECT id FROM Utenti JOIN Amicizie ON Utenti.id = Amicizie.idUtente2 WHERE Amicizie.idUtente1 = ? )";
+            
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setString(1, "%" + name + "%");
+            stmt.setString(2, "%" + name + "%");
+            stmt.setInt(3, id);
+            stmt.setInt(4, id);
+     
+            
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            while (res.next()) {
+            
+                UtentiRegistrati utente = new UtentiRegistrati();
+                utente.setId(res.getInt("id"));
+                utente.setNome(res.getString("nome"));
+                utente.setCognome(res.getString("cognome"));
+                utente.setEmail(res.getString("email"));
+                utente.setPassword(res.getString("password"));
+                utente.setUrlFotoProfilo(res.getString("urlProfilo"));
+                utente.setFraseDescrizione(res.getString("frasePresentazione"));
+                utente.setDataNascita(res.getString("dataNascita"));
+                
+                listaAmici.add(utente);
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return listaAmici;
+    }
         
     public void setConnectionString(String s){
 	this.connectionString = s;

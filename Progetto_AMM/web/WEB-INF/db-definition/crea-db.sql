@@ -102,6 +102,119 @@ VALUES (default,
 		'img/mickey.png',
 		'1928-01-01'
 );
+
+INSERT INTO utenti (id, nome, cognome,email,password, frasePresentazione,urlProfilo, dataNascita) 
+VALUES (default,
+		'Albus',
+		'Silente',
+		'albus@silente.com',
+		'123',
+		'È l’ignoto che temiamo quando guardiamo la morte e il buio, nient’altro.',
+		'img/albus.jpg',
+		'1881-05-01'
+);
+
+INSERT INTO utenti (id, nome, cognome,email,password, frasePresentazione,urlProfilo, dataNascita) 
+VALUES (default,
+		'Sirius',
+		'Black',
+		'sirius@black.com',
+		'123',
+		'..sta sempre a noi scegliere da che parte schierarci.',
+		'img/sirius.jpg-c200',
+		'1959-11-03'
+);
+
+INSERT INTO utenti (id, nome, cognome,email,password, frasePresentazione,urlProfilo, dataNascita) 
+VALUES (default,
+		'Remus',
+		'Lupin',
+		'remus@lupin.com',
+		'123',
+		'Ho la Lunastorta.....',
+		'img/remus.jpg',
+		'1960-03-10'
+);
+
+INSERT INTO utenti (id, nome, cognome,email,password, frasePresentazione,urlProfilo, dataNascita) 
+VALUES (default,
+		'Minerva',
+		'McGranitt',
+		'minerva@mcgranitt.com',
+		'123',
+		'Miao miao',
+		'img/minerva.jpg',
+		'1935-10-04'
+);
+
+INSERT INTO utenti (id, nome, cognome,email,password, frasePresentazione,urlProfilo, dataNascita) 
+VALUES (default,
+		'Rubeus',
+		'Hagrid',
+		'rubeus@hagrid.com',
+		'123',
+		'Sono Custode,guardiacaccia e insegnante di Cura delle Creature Magiche',
+		'img/hagrid.jpg',
+		'1928-12-06'
+);
+
+INSERT INTO utenti (id, nome, cognome,email,password, frasePresentazione,urlProfilo, dataNascita) 
+VALUES (default,
+		'Alastor',
+		'Moody',
+		'all@moody.com',
+		'123',
+		'" La bocca pareva un taglio diagonale, e mancava un grosso pezzo di naso."',
+		'img/malocchio.jpg',
+		'1928-12-06'
+);
+
+INSERT INTO utenti (id, nome, cognome,email,password, frasePresentazione,urlProfilo, dataNascita) 
+VALUES (default,
+		'Seveus',
+		'Piton',
+		'severus@piton.com',
+		'123',
+		'Andate a pagina 394',
+		'img/piton.jpg',
+		'1960-01-09'
+);
+
+INSERT INTO utenti (id, nome, cognome,email,password, frasePresentazione,urlProfilo, dataNascita) 
+VALUES (default,
+		'Harry',
+		'Potter',
+		'harry@potter.com',
+		'123',
+		'Expecto Patronum',
+		'img/harry.jpg',
+		'1980-07-31'
+);
+	
+	
+INSERT INTO utenti (id, nome, cognome,email,password, frasePresentazione,urlProfilo, dataNascita) 
+VALUES (default,
+		'Hermione',
+		'Granger',
+		'hermione@granger.com',
+		'123',
+		'E'' Leviosa non Leviosà',
+		'img/hermione.jpg',
+		'1979-09-19'
+);
+	
+	
+INSERT INTO utenti (id, nome, cognome,email,password, frasePresentazione,urlProfilo, dataNascita) 
+VALUES (default,
+		'Ron',
+		'Weasley',
+		'ron@weasley.com',
+		'123',
+		'Miseriaccia!',
+		'img/ron.jpg',
+		'1980-03-01'
+);
+	
 		
 /*
 Inserimento dei due gruppi
@@ -129,6 +242,21 @@ VALUES (default,
         4
 );
 
+INSERT INTO gruppi(id, nome, urlImmagine ,amministratore)
+VALUES (default,
+        'Ordine della Fenice',
+        'img/fenice.jpg',
+        5
+
+);
+
+INSERT INTO gruppi(id, nome, urlImmagine ,amministratore)
+VALUES (default,
+        'Grifondoro',
+        'img/grif.jpg',
+        12
+
+);
 
 
 
@@ -209,6 +337,85 @@ VALUES (default,
         NULL
 );
 
+INSERT INTO post(id, autore,contenuto ,allegato, tipo, idGroup, idUser )
+VALUES (default,
+        5,
+       '"La voce di un bambino, per quanto onesta e sincera, è insignificante per chi ha dimenticato come ascoltare. Cosa misteriosa il tempo: potente e, quando ci s''intromette, pericolosa. Sirius Black è nella cella in cima alla torre oscura. Conosci la legge, signorina Granger, non dovete essere visti. E fareste bene, secondo me, a tornare prima dell''ultimo rintocco, altrimenti le conseguenze saranno troppo devastanti per parlarne. Se stanotte avrete successo, più di una vita innocente verrà salvata. Tre giri dovrebbero bastare! Oh, a proposito, quando si è in dubbio, trovo che tornare sui propri passi sia un modo saggio di cominciare!"',
+       NULL,
+        1,
+        4,
+       NULL
+);
+
+INSERT INTO post(id, autore,contenuto ,allegato, tipo, idGroup, idUser )
+VALUES (default,
+        11,
+        '“Dopo tutto questo tempo..Sempre”',
+        'img/patronus_snape.jpg',
+        2,
+        4,
+        NULL
+);
+
+INSERT INTO post(id, autore,contenuto ,allegato, tipo, idGroup, idUser )
+VALUES (default,
+        10,
+       '"Alastor Moody. Ex Auror, scontento del Ministero, e nuovo insegnante di Difesa contro le Arti Oscure. 
+	   Sono qui perché me l''ha chiesto Silente. Fine della storia, addio, ciao. Ci sono domande?
+	   Schiere di streghe e di maghi hanno affermato di aver eseguito gli ordini di Voi-Sapete-Chi perché? Sotto 
+	   l''influenza della maledizione Imperius! Ma qui sta il punto: come li scoviamo i bugiardi?!
+	   
+	    L''anatema che uccide. Si sa che una sola persona è sopravvissuta ad esso... ed è in questa stanza."',
+       NULL,
+        1,
+        4,
+       NULL
+);
+
+INSERT INTO post(id, autore,contenuto ,allegato, tipo, idGroup, idUser )
+VALUES (default,
+        12,
+        '“Expecto Patronum”',
+        'img/p_h.jpg',
+        2,
+        4,
+        NULL
+);
+
+INSERT INTO post(id, autore,contenuto ,allegato, tipo, idGroup, idUser )
+VALUES (default,
+        12,
+        '“Expecto Patronum”',
+        'img/p_h.jpg',
+        2,
+        5,
+        NULL
+);
+
+INSERT INTO post(id, autore,contenuto ,allegato, tipo, idGroup, idUser )
+VALUES (default,
+        13,
+       '‘Sei sicuro che sia un incantesimo, vero?’ chiese la ragazza. ‘Comunque, non funziona molto bene, o sbaglio? Io ho provato a fare alcuni 
+	   incantesimi semplici semplici e mi sono riusciti tutti. Nella mia famiglia, nessuno ha poteri magici; è stata una vera sorpresa quando ho ricevuto la lettera, 
+	    ma mi ha fatto un tale piacere, naturalmente, voglio dire, è la migliore scuola di magia che esista, ho sentito dire... 
+	   Ho imparato a memoria tutti i libri di testo, naturalmente, spero proprio che basti... E... a proposito, io mi chiamo Hermione Granger, e voi?’',
+       NULL,
+        1,
+        5,
+       NULL
+);
+
+INSERT INTO post(id, autore,contenuto ,allegato, tipo, idGroup, idUser )
+VALUES (default,
+        14,
+       'McGranitt: mi domando perché ogni volta che succede qualcosa ci siete di mezzo voi 3!
+		Ron: ci creda professoressa, me lo chiedo anche io da 6 anni!’',
+       NULL,
+        1,
+        5,
+       NULL
+); 
+
 /*
 Inserimento delle iscrizioni
 */
@@ -218,7 +425,22 @@ VALUES (1,1),
         (1,3),
         (2,2),
 		(3,4),
-		(3,1);
+		(3,1),
+		(4,5),
+		(4,6),
+		(4,7),
+		(4,8),
+		(4,9),
+		(4,10),
+		(4,11),
+		(4,12),	
+		(5,12),
+		(5,13),
+		(5,14);
+		
+
+
+		 
 
 
 /*
@@ -231,7 +453,53 @@ VALUES (2,1),
         (3,1),
 		(4,1),
 		(4,2),
-		(4,3);
+		(4,3),
+		(5,6),
+		(5,7),
+		(5,8),
+		(5,9),
+		(5,10),
+		(5,11),
+		(5,12),
+		(5,13),
+		(5,14),
+		(6,7),
+		(6,8),
+		(6,9),
+		(6,10),
+		(6,11),
+		(6,12),
+		(6,13),
+		(6,14),
+		(7,8),
+		(7,9),
+		(7,10),
+		(7,11),
+		(7,12),
+		(7,13),
+		(7,14),
+		(8,9),
+		(8,10),
+		(8,11),
+		(8,12),
+		(8,13),
+		(8,14),
+		(9,10),
+		(9,11),
+		(9,12),
+		(9,13),
+		(9,14),
+		(10,11),
+		(10,12),
+		(10,13),
+		(10,14),
+		(11,12),
+		(12,13),
+		(12,14),
+		(13,14);
+		
+		
+		
 		
 	   
 	   

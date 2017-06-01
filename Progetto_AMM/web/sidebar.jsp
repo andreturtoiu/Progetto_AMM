@@ -6,25 +6,40 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Andreea Turtoiu">
+        <meta name="keywords" content="cerca">
+        
+        <link rel="stylesheet" type="text/css" href="style.css" media="screen">
 
-<div id="sideBar">
+    </head>
+    
+    <body>
+        <div id="sideBar">
   
-        <input type="text" name="cerca" id="cerca" value="Cerca..."/>
-
+             <div id="cerca">
+                <input id="searchFriends" type="text" placeholder="Cerca amici.." value="">
+                <button id="searchYourFriend">Cerca</button>
+            </div>
+            
             <div id="user">   
                 <h3>Amici</h3>
                 <ul>
                     <c:forEach var="user" items="${amici}">
                         <li>
-                            <img alt ="Foto" src="${user.urlFotoProfilo}"/> 
-                            <a href="Bacheca?user=${user.id}">${user.nome} ${user.cognome}</a> 
+                            <div class ="userData">
+                                <img alt ="Foto Profilo" src="${user.urlFotoProfilo}"/> 
+                                <a href="Bacheca?user=${user.id}">${user.nome} ${user.cognome}</a> 
+                            </div>
                         </li>        
                     </c:forEach>    
-                </ul>
-                
+                </ul>     
             </div>
-            
 
             <div id="group">
                 <h3>Gruppi</h3>
@@ -36,6 +51,9 @@
                         </li>                                 
                     </c:forEach>  
                 </ul>
-
-            </div>       
-</div>
+            </div>   
+            
+        </div>
+    </body>
+ 
+</html>
