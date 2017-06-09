@@ -2,6 +2,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/javascript.js"></script> 
+
 <html>
     <head>
         <title>Nerdbook</title>

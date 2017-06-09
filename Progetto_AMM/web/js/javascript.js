@@ -4,10 +4,12 @@
  * and open the template in the editor.
  */
 
-function createElement(usr){
+//Creo utente
+function createElementUser(usr){
     var img = $("<img>")
             .attr("alt","Foto Profilo")
             .attr("src",usr.urlFotoProfilo);
+    
     var link = $("<a>")
             .attr("href", "Bacheca?user="+usr.id)
             .html(usr.nome + " " + usr.cognome);
@@ -25,16 +27,16 @@ function createElement(usr){
 function stateSuccess(data){
     var title = $("<h3>")
                 .html("Amici"); 
-    var userListPage = $("#user");
+    var userList = $("#user");
     
     var lista = $("<ul>");
-    $(userListPage).empty();
-    $(userListPage).append(title);
+    $(userList).empty();
+    $(userList).append(title);
     
     for(var instance in data){
-        $(lista).append(createElement(data[instance]));
+        $(lista).append(createElementUser(data[instance]));
     }
-    $(userListPage).append(lista);
+    $(userList).append(lista);
 }
 function stateFailure(data, state){
     console.log(state);
@@ -43,13 +45,13 @@ function stateFailure(data, state){
 $(document).ready(function(){
     $("#searchFriends").change(function(){
         
-        var wantedUser = $("#searchFriends")[0].value;
+        var wanted = $("#searchFriends")[0].value;
         
         $.ajax({
             url: "Filter",
             data:{
                 cmd:"search",
-                nomeAmico: wantedUser  
+                nomeAmico: wanted 
             },
             dataType:"json",
             success: function(data, state){

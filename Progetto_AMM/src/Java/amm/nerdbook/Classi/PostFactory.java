@@ -31,7 +31,9 @@ public class PostFactory {
     }
      
     private PostFactory() {}
-       
+
+    
+    //Se sono sulla bacheca dell'utente loggato vedo anche i post dei gruppi,
     public List getPostList(UtentiRegistrati user) {
         try {
             // path, username, password
@@ -87,7 +89,58 @@ public class PostFactory {
         return null;
        
     }
+   
     
+    /*
+    //Se sono sulla bacheca dell'utente loggato vedo anche i post dei gruppi, altrimenti no
+    public List getPostListbyOtherUser(UtentiRegistrati user) {
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "Andreea", "1234");
+            
+                String query = "SELECT post.*, postType.nome"
+                                + " FROM post "
+
+                                + "JOIN postType ON post.tipo = postType.id "
+
+                                + "WHERE autore = ? OR "
+                        
+                                + "idUser = ? "
+
+                                + "ORDER BY post.id DESC" ;
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, user.getId());
+            stmt.setInt(2, user.getId());
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            List<Post> listaPost = new ArrayList();
+            // ciclo sulle righe restituite
+            while (res.next()) {
+                Post post = new Post();
+                
+                post.setContent(res.getString("contenuto"));
+                post.setAllegato(res.getString("allegato"));
+                post.setId(res.getInt("id"));
+                post.setUser(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(res.getInt("autore")));
+                post.setPostType(postTypeFromString(res.getString("nome")));
+                listaPost.add(post);          
+            }
+             
+            stmt.close();
+            conn.close();
+            
+            return listaPost;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+       
+    }
+    */
         public List getPostListByGroup(Gruppi gruppo) {
             try {
                 // path, username, password

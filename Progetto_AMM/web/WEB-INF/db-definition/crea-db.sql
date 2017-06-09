@@ -407,7 +407,7 @@ VALUES (default,
 
 INSERT INTO post(id, autore,contenuto ,allegato, tipo, idGroup, idUser )
 VALUES (default,
-        14,
+        8,
        'McGranitt: mi domando perché ogni volta che succede qualcosa ci siete di mezzo voi 3!
 		Ron: ci creda professoressa, me lo chiedo anche io da 6 anni!’',
        NULL,
