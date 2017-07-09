@@ -273,7 +273,22 @@ input,textArea{
     width: 50%;
 }
 
+.formDati{
+        width: 300px;
+        float: left;
+        margin-top: 100px;
+}
 
+#sommario{
+   margin-top: 150px;
+}
+
+#fraseDescrizioneGruppo{
+    font: 20px "Verdiana", Arial, sans-serif;
+    font-weight: bold;
+    text-align: center;  
+    
+}
 
 @media only screen and (min-width: 1024px){
     #bacheca{
@@ -281,19 +296,12 @@ input,textArea{
         float:left;
         
     }  
-    .formDati {
-        width: 300px;
-        margin-top: 100px;
-        float: left;
-    }
+
     .formL{
         width: 300px;
         margin-top: 100px;    
     }
     
-     #sommario{
-        margin-top: 150px;
-    }
     
     #loginForm{
         margin-left: auto;
@@ -330,24 +338,16 @@ input,textArea{
  
 }
 
+
 @media only screen and (max-width: 1024px) and (min-width: 480px){
    #bacheca{
        width: 83%;
        float: left;
    }
-   .formDati{
-        width: 300px;
-        float: left;
-        margin-top: 100px;
-    }
     
     .formL{
         width: 350px;
         margin-top: 10px;    
-    }
-    
-    #sommario{
-        margin-top: 150px;
     }
     
     .inOut{

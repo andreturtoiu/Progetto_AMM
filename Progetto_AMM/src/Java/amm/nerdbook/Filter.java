@@ -44,7 +44,7 @@ public class Filter extends HttpServlet {
             if (command != null) 
             {
                 // Verifica che commando e id siano stati impostati
-                if (command.equals("search")) 
+               if (command.equals("search")) 
                 {
 
                     // Esegue la ricerca

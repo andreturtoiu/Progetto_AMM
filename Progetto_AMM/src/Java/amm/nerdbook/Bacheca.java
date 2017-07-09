@@ -65,11 +65,14 @@ public class Bacheca extends HttpServlet {
             if(user != null){
                 List<Post> posts;
                 if(idGroup != -1 ){
+
                     Gruppi gruppo = GruppiFactory.getInstance().getGruppiById(idGroup);
+                    UtentiRegistrati admin = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(gruppo.getAmministratore());
                     posts =PostFactory.getInstance().getPostListByGroup(gruppo);
                     request.setAttribute("gruppo", gruppo);
                     request.setAttribute("tipoBacheca","bachecaGruppo");
                     request.setAttribute("nomeDest",gruppo.getNome());
+                    request.setAttribute("administrator",admin.getNome() );
                 }else{
                    // if(user.getId() == loggedUserID)
                         posts =PostFactory.getInstance().getPostList(user);

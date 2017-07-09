@@ -27,11 +27,13 @@
             <form action="NewPost.jsp">
                 <c:choose>
                     <c:when test="${tipoBacheca == 'bachecaUtente'}">
-                        <input type="hidden" name="dest" value="${user.id}"/>                        
+                        <input type="hidden" name="dest" value="${user.id}"/> 
+                        <h3>Bacheca: ${user.nome} ${user.cognome}</h3>
                     </c:when>
 
                     <c:when test="${tipoBacheca == 'bachecaGruppo'}">
-                        <input type="hidden" name="dest" value="${gruppo.id}"/>                        
+                        <input type="hidden" name="dest" value="${gruppo.id}"/> 
+                        <h3>Bacheca: ${gruppo.nome}</h3>                    
                     </c:when>
                 </c:choose>
                 <input type="hidden" name="nomeDest" value="${nomeDest}"/>
@@ -43,8 +45,7 @@
                         </div>
                         <div>
                             <label for="link">Allegato</label>
-                            <input type="url" name="urlAllegato" id="link"/>
-                                  
+                            <input type="url" name="urlAllegato" id="link"/>                                  
                         </div>
                     </div>
                     <div id="postType">
@@ -57,11 +58,7 @@
                             <input type="radio" name="postType" value="immaginePost" id="immaginePost">  
                             <input type="radio" name="postType" value="LinkType" id="LinkType">
                         </div>
-
-                        
-
                     </div>
-
                             <button type="submit" name ="thereIsPost" value="needConfirm">Invia</button>
                 </div>            
             </form>
@@ -76,6 +73,14 @@
                 <c:if test="${user.fraseDescrizione != null}">
                         <p>Frase descrizione: ${user.fraseDescrizione}</p>  
                 </c:if>  
+            </div>         
+        </c:if>
+                
+    <c:if test="${tipoBacheca == 'bachecaGruppo'}">
+            <div id="fraseDescrizione">
+                <img alt ="Foto" src="${gruppo.urlImmagine}"/>
+                <p> Nome gruppo: ${gruppo.nome}</p>
+                <p> Amministratore: ${administrator}</p>
             </div>         
         </c:if>
         

@@ -24,7 +24,6 @@
   
              <div id="cerca">
                 <input id="searchFriends" type="text" placeholder="Cerca amici.." value="">
-                <button id="searchYourFriend">Cerca</button>
             </div>
             
             <div id="user">   

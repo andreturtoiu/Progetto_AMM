@@ -360,5 +360,9 @@ public class UtentiRegistratiFactory {
     public String getConnectionString(){
 	return this.connectionString;
     }
+
+    int getIdByUserAndPassword(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -70,7 +70,7 @@ public class PostFactory {
             // ciclo sulle righe restituite
             while (res.next()) {
                 Post post = new Post();
-                
+                      
                 post.setContent(res.getString("contenuto"));
                 post.setAllegato(res.getString("allegato"));
                 post.setId(res.getInt("id"));
