@@ -421,7 +421,7 @@ Inserimento delle iscrizioni
 */
 
 INSERT INTO iscrizioni(idGruppi, idUtenti)
-VALUES (1,1),
+VALUES  (1,1),
         (1,3),
         (2,2),
 		(3,4),

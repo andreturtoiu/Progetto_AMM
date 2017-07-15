@@ -5,13 +5,11 @@
  */
 package amm.nerdbook;
 
-import amm.nerdbook.Classi.Gruppi;
+
 import amm.nerdbook.Classi.Post;
 import amm.nerdbook.Classi.PostFactory;
-import amm.nerdbook.Classi.UtentiRegistrati;
 import amm.nerdbook.Classi.UtentiRegistratiFactory;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -67,14 +65,12 @@ public class NewPost extends HttpServlet {
                 int utenteD = -1;
                 int gruppoD = -1;
                        
-                if(request.getParameter("tipoBacheca").equals("utente")){
+                if(request.getParameter("tipoBacheca").equals("bachecaUtente")){
                     utenteD = Integer.parseInt(request.getParameter("dest"));
                 }else{
                     gruppoD = Integer.parseInt(request.getParameter("dest"));
                 }
                     
-                
-                
                 String content = request.getParameter("textPost");
                 String type = request.getParameter("postType");
                 String contentUrl = request.getParameter("urlAllegato");
@@ -96,16 +92,15 @@ public class NewPost extends HttpServlet {
                 
                 post.setUser(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById((Integer)session.getAttribute("loggedId")));
                 PostFactory.getInstance().newPost(post,utenteD, gruppoD);
-                request.getRequestDispatcher("Bacheca").forward(request, response);
+                request.getRequestDispatcher("bacheca.html").forward(request, response);
             
             }
             else{
-                request.getRequestDispatcher("Bacheca").forward(request, response);
-                return;
+                request.getRequestDispatcher("bacheca.html").forward(request, response);
             }
         }
         else{
-            request.getRequestDispatcher("Login").forward(request, response);
+            request.getRequestDispatcher("login.html").forward(request, response);
         }
  }       
 

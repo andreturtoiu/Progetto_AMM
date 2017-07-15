@@ -127,4 +127,53 @@ public class GruppiFactory {
         }
         return null;                 
     }
+    
+    public List getGroupList(String name, int id) {
+        List<Gruppi> listaGruppi = new ArrayList<Gruppi>();
+        
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "Andreea", "1234");
+            
+            String query =
+                            "SELECT * FROM Gruppi "  
+                    
+                            +"WHERE ( LOWER(nome) LIKE LOWER(?) ) AND id in "
+                           //select che rappresenta i gruppi a cui l'utente è iscritto
+                            + "(SELECT * FROM gruppi "
+                                + "JOIN iscrizioni ON gruppi.id = iscrizioni.idGruppi "
+                                + " WHERE idUtenti= ?) ";
+                                
+                            
+                            
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setString(1, "%" + name + "%");
+            stmt.setInt(2, id);
+ 
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            while (res.next()) {
+            
+                Gruppi gruppo = new Gruppi();
+                gruppo.setId(res.getInt("id"));
+                gruppo.setNome(res.getString("nome"));
+                gruppo.setUrlImmagine(res.getString("urlImmagine"));
+                gruppo.setAmministratore(res.getInt("amministratore"));
+                listaGruppi.add(gruppo);
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return listaGruppi;
+    }
 }

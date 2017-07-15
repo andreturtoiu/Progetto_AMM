@@ -24,7 +24,7 @@
                 <div id="invalidDataWarning">I dati inseriti non sono corretti</div>
             </c:if>
                 
-            <form action="Login" method="get">
+            <form action="login.html" method="get">
                 <label for="uName">Username</label>
                 <input type="text" name="username" id="uName"/>
 

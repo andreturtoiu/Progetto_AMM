@@ -74,10 +74,10 @@ public class Bacheca extends HttpServlet {
                     request.setAttribute("nomeDest",gruppo.getNome());
                     request.setAttribute("administrator",admin.getNome() );
                 }else{
-                   // if(user.getId() == loggedUserID)
+                    if(user.getId() == loggedUserID)
                         posts =PostFactory.getInstance().getPostList(user);
-                    //else                            
-                      //  posts =PostFactory.getInstance().getPostListbyOtherUser(user);
+                    else                            
+                        posts =PostFactory.getInstance().getPostListbyOtherUser(user);
                            
                     request.setAttribute("user", user);     
                     request.setAttribute("tipoBacheca","bachecaUtente");

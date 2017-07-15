@@ -16,14 +16,14 @@
             <nav>
                 <ol>
                     <li><a href="descrizione.jsp" id="nerdbook_style">NerdBook</a></li>
-                    <li><a href="Bacheca">Bacheca</a></li> 
-                    <li><a href="Profilo">Profilo</a></li>
+                    <li><a href="bacheca.html">Bacheca</a></li> 
+                    <li><a href="profilo.html">Profilo</a></li>
                 </ol>
             </nav>
         </div>  
         <div class="inOut">
             <img alt ="Foto" src="${utenteLoggato.urlFotoProfilo}"/>
-            <a href="Login?logout=true">Logout</a>
+            <a href="login.html?logout=true">Logout</a>
         </div>
         
     </c:if>
@@ -42,7 +42,7 @@
              </nav>
         </div>
          <div class="inOut">
-            <a href="Login">Login</a>
+            <a href="login.html">Login</a>
         </div>
     </c:if> 
         

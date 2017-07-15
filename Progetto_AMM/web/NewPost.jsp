@@ -17,8 +17,8 @@
         <h1>DATI:</h1>
         <h2>Utente che ha inserito</h2>
         <p>${utenteLoggato.nome}</p>
-            <c:if test="${utenteLoggato.cognome} != null">
-                          <p>{utenteLoggato.cognome}</p>
+            <c:if test="${utenteLoggato.cognome!= null}">
+                          <p>${utenteLoggato.cognome}</p>
             </c:if>
         <h2>Proprietario Bacheca</h2>
         <p>${param.nomeDest}</p>

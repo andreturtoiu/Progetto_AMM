@@ -10,13 +10,16 @@ package amm.nerdbook.Classi;
  * @author Andreea
  */
 public class Post {
+
+   
     
     public enum Type {
         TEXT, IMAGE, LINK;
     };
 
     private int id;
-    private UtentiRegistrati user;
+    private UtentiRegistrati user; //chi pubblica
+    private Gruppi gruppi;
     private String content;
     private Type postType;
     private String allegato;
@@ -113,6 +116,20 @@ public class Post {
      */
     public void setConnectioString(String connectionString) {
         this.connectionString = connectionString;
+    }
+    
+     /**
+     * @return the gruppi
+     */
+    public Gruppi getGruppi() {
+        return gruppi;
+    }
+
+    /**
+     * @param gruppi the gruppi to set
+     */
+    public void setGruppi(Gruppi gruppi) {
+        this.gruppi = gruppi;
     }
     
 }

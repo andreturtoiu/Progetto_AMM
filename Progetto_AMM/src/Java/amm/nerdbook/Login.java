@@ -54,9 +54,9 @@ public class Login extends HttpServlet {
         if (session.getAttribute("loggedIn") != null && session.getAttribute("loggedIn").equals(true)) {
             int userId = (Integer)session.getAttribute("loggedId");
             if(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userId).completo())
-                    request.getRequestDispatcher("Bacheca").forward(request, response);
+                    request.getRequestDispatcher("bacheca.html").forward(request, response);
                   else 
-                     request.getRequestDispatcher("Profilo").forward(request, response);
+                     request.getRequestDispatcher("profilo.html").forward(request, response);
             return;
         
         //Se l'utente non è loggato.
@@ -74,9 +74,9 @@ public class Login extends HttpServlet {
                     
                     
                 if(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(loggedId).completo())
-                        request.getRequestDispatcher("Bacheca").forward(request, response);
+                        request.getRequestDispatcher("bacheca.html").forward(request, response);
                       else 
-                         request.getRequestDispatcher("Profilo").forward(request, response);
+                         request.getRequestDispatcher("profilo.html").forward(request, response);
                 return;
                 
                 } else { //Se l'utente che cerca di loggare non è presente

@@ -45,7 +45,7 @@ public class Profilo extends HttpServlet {
         //Cancellazione account
         if(request.getParameter("deleteAccount")!=null){
             UtentiRegistratiFactory.getInstance().deleteUser(loggedId);
-            request.getRequestDispatcher("Login?logout=true").forward(request,response);
+            request.getRequestDispatcher("login.html?logout=true").forward(request,response);
             return;
         }
 

@@ -14,13 +14,13 @@
     <body>
         <h1>Confermi di voler cancellare il tuo account?</h1>
         
-        <form action="Profilo" method = "post">
+        <form action="profilo.html" method = "post">
                 <div id ="deleteUser">
                     <button type="submit" name ="deleteAccount">Si</button>    
                 </div>
         </form>
         
-        <form action="Profilo" method = "post">
+        <form action="profilo.html" method = "post">
                 <div id ="deleteUser">
                     <button type="submit" name ="noDeleteUser">No</button>    
                 </div>

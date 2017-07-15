@@ -39,12 +39,12 @@ public class PostFactory {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "Andreea", "1234");
             
-            String query = "SELECT post.*, postType.nome"
+         String query = "SELECT post.*, postType.nome"
                             + " FROM post "
 
                             + "JOIN postType ON post.tipo = postType.id "
 
-                            + "WHERE idUser = ? OR "
+                            + "WHERE idUser=? OR "
 
                             + "idGroup IN (SELECT id FROM gruppi "
 
@@ -54,6 +54,7 @@ public class PostFactory {
 
                             + "ORDER BY post.id DESC" 
                     ;
+					
             
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
@@ -69,12 +70,12 @@ public class PostFactory {
             List<Post> listaPost = new ArrayList();
             // ciclo sulle righe restituite
             while (res.next()) {
-                Post post = new Post();
-                      
+                Post post = new Post();     
                 post.setContent(res.getString("contenuto"));
                 post.setAllegato(res.getString("allegato"));
                 post.setId(res.getInt("id"));
                 post.setUser(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(res.getInt("autore")));
+                post.setGruppi(GruppiFactory.getInstance().getGruppiById(res.getInt("idGroup")));
                 post.setPostType(postTypeFromString(res.getString("nome")));
                 listaPost.add(post);          
             }
@@ -90,42 +91,39 @@ public class PostFactory {
        
     }
    
-    
-    /*
-    //Se sono sulla bacheca dell'utente loggato vedo anche i post dei gruppi, altrimenti no
-    public List getPostListbyOtherUser(UtentiRegistrati user) {
-        try {
+    public List getPostListbyOtherUser(UtentiRegistrati user){
+                try {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "Andreea", "1234");
             
-                String query = "SELECT post.*, postType.nome"
-                                + " FROM post "
+         String query = "SELECT post.*, postType.nome"
+                            + " FROM post "
 
-                                + "JOIN postType ON post.tipo = postType.id "
+                            + "JOIN postType ON post.tipo = postType.id "
 
-                                + "WHERE autore = ? OR "
-                        
-                                + "idUser = ? "
+                            + "WHERE idUser=? "
 
-                                + "ORDER BY post.id DESC" ;
+                            + "ORDER BY post.id DESC" 
+                    ;
+					
             
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
             
             // Si associano i valori
             stmt.setInt(1, user.getId());
-            stmt.setInt(2, user.getId());
+
             // Esecuzione query
             ResultSet res = stmt.executeQuery();
             List<Post> listaPost = new ArrayList();
             // ciclo sulle righe restituite
             while (res.next()) {
-                Post post = new Post();
-                
+                Post post = new Post();     
                 post.setContent(res.getString("contenuto"));
                 post.setAllegato(res.getString("allegato"));
                 post.setId(res.getInt("id"));
                 post.setUser(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(res.getInt("autore")));
+                post.setGruppi(GruppiFactory.getInstance().getGruppiById(res.getInt("idGroup")));
                 post.setPostType(postTypeFromString(res.getString("nome")));
                 listaPost.add(post);          
             }
@@ -138,55 +136,58 @@ public class PostFactory {
             e.printStackTrace();
         }
         return null;
-       
+    
+    
+    
     }
-    */
-        public List getPostListByGroup(Gruppi gruppo) {
-            try {
-                // path, username, password
-                Connection conn = DriverManager.getConnection(connectionString, "Andreea", "1234");
+        
+    public List getPostListByGroup(Gruppi gruppo) {
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "Andreea", "1234");
 
-                String query = "SELECT post.*, postType.nome"
-                                + " FROM post "
+            String query = "SELECT post.*, postType.nome"
+                            + " FROM post "
 
-                                + "JOIN postType ON post.tipo = postType.id "
+                            + "JOIN postType ON post.tipo = postType.id "
 
-                                + "WHERE idGroup = ? "
+                            + "WHERE idGroup = ? "
 
-                                + "ORDER BY post.id DESC" 
-                        ;
+                            + "ORDER BY post.id DESC" 
+                    ;
 
-                // Prepared Statement
-                PreparedStatement stmt = conn.prepareStatement(query);
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
 
-                // Si associano i valori
-                stmt.setInt(1, gruppo.getId());
+            // Si associano i valori
+            stmt.setInt(1, gruppo.getId());
 
-                // Esecuzione query
-                ResultSet res = stmt.executeQuery();
-                List<Post> listaPost = new ArrayList();
-                // ciclo sulle righe restituite
-                while (res.next()) {
-                    Post post = new Post();
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            List<Post> listaPost = new ArrayList();
+            // ciclo sulle righe restituite
+            while (res.next()) {
+                Post post = new Post();
 
-                    post.setContent(res.getString("contenuto"));
-                    post.setAllegato(res.getString("allegato"));
-                    post.setId(res.getInt("id"));
-                    post.setUser(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(res.getInt("autore")));
-                    post.setPostType(postTypeFromString(res.getString("nome")));
-                    listaPost.add(post);          
-                }
-
-                stmt.close();
-                conn.close();
-
-                return listaPost;
-            } catch (SQLException e) {
-                e.printStackTrace();
+                post.setContent(res.getString("contenuto"));
+                post.setAllegato(res.getString("allegato"));
+                post.setId(res.getInt("id"));
+                post.setGruppi(GruppiFactory.getInstance().getGruppiById(res.getInt("idGroup")));
+                post.setUser(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(res.getInt("autore")));
+                post.setPostType(postTypeFromString(res.getString("nome")));
+                listaPost.add(post);          
             }
-            return null;
 
+            stmt.close();
+            conn.close();
+
+            return listaPost;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return null;
+
+    }
         
         
     public void setConnectionString(String s){
@@ -218,7 +219,7 @@ public class PostFactory {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "Andreea", "1234");
             
-            String query = "INSERT INTO post(id, autore,contenuto ,allegato, tipo, idGroup, idUser )" +
+            String query = "INSERT INTO post(id, autore,contenuto ,allegato, tipo, idGroup, idUser ) " +
                            "VALUES (default,?,?,?,?,?,?)"
                     ;
             

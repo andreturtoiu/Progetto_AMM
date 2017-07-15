@@ -5,6 +5,8 @@
  */
 package amm.nerdbook;
 
+import amm.nerdbook.Classi.Gruppi;
+import amm.nerdbook.Classi.GruppiFactory;
 import amm.nerdbook.Classi.UtentiRegistrati;
 import amm.nerdbook.Classi.UtentiRegistratiFactory;
 import java.io.IOException;
@@ -46,11 +48,9 @@ public class Filter extends HttpServlet {
                 // Verifica che commando e id siano stati impostati
                if (command.equals("search")) 
                 {
-
                     // Esegue la ricerca
                     List<UtentiRegistrati> listaAmici = UtentiRegistratiFactory.getInstance()
-                            .getAmiciList(request.getParameter("nomeAmico"),loggedId);
-
+                            .getAmiciList(request.getParameter("nomeAmico"),loggedId);       
                     request.setAttribute("listaAmici", listaAmici);
 
                     // Quando si restituisce del json e' importante segnalarlo ed evitare il caching

@@ -296,7 +296,7 @@ public class UtentiRegistratiFactory {
 
     }  
     
-     public List getAmiciList(String name, int id) {
+    public List getAmiciList(String name, int id) {
         List<UtentiRegistrati> listaAmici = new ArrayList<UtentiRegistrati>();
         
         try {

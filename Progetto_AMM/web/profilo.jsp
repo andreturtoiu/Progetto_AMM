@@ -23,7 +23,7 @@
         <jsp:include page="sidebar.jsp"/>
 
         <div class="formDati">
-            <form action="Profilo" method="post">
+            <form action="profilo.html" method="post">
                 <label for="firstname">Nome:</label>
                 <input type="text" name="firstname" id ="firstname" value ="${loggedUser.nome}">
 

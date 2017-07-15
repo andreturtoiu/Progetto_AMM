@@ -25,6 +25,7 @@
         
         <div id ="nuovoPost1">
             <form action="NewPost.jsp">
+                <input type="hidden" name="tipoBacheca" value="${tipoBacheca}"/>
                 <c:choose>
                     <c:when test="${tipoBacheca == 'bachecaUtente'}">
                         <input type="hidden" name="dest" value="${user.id}"/> 
@@ -36,7 +37,10 @@
                         <h3>Bacheca: ${gruppo.nome}</h3>                    
                     </c:when>
                 </c:choose>
+                        
+                <!--Parametro che uso per NewPost.jsp per individuare il nome del destinatario-->
                 <input type="hidden" name="nomeDest" value="${nomeDest}"/>
+                
                 <div id="nuovoPost">
                     <div id="postContent">
                         <div>

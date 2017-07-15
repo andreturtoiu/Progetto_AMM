@@ -16,29 +16,37 @@
         <servlet-name>NewPost</servlet-name>
         <servlet-class>amm.nerdbook.NewPost</servlet-class>
     </servlet>
-	    <servlet>
+    <servlet>
         <servlet-name>Filter</servlet-name>
         <servlet-class>amm.nerdbook.Filter</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FilterGruppi</servlet-name>
+        <servlet-class>amm.nerdbook.FilterGruppi</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
-        <url-pattern>/Login</url-pattern>
+        <url-pattern>/login.html</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Profilo</servlet-name>
-        <url-pattern>/Profilo</url-pattern>
+        <url-pattern>/profilo.html</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Bacheca</servlet-name>
-        <url-pattern>/Bacheca</url-pattern>
+        <url-pattern>/bacheca.html</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>NewPost</servlet-name>
         <url-pattern>/NewPost</url-pattern>
     </servlet-mapping>
-	    <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>Filter</servlet-name>
         <url-pattern>/Filter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterGruppi</servlet-name>
+        <url-pattern>/FilterGruppi</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

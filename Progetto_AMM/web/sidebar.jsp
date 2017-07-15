@@ -23,7 +23,7 @@
         <div id="sideBar">
   
              <div id="cerca">
-                <input id="searchFriends" type="text" placeholder="Cerca amici.." value="">
+                <input id="searchFriends" type="text" placeholder="Cerca.." value="">
             </div>
             
             <div id="user">   
@@ -33,7 +33,7 @@
                         <li>
                             <div class ="userData">
                                 <img alt ="Foto Profilo" src="${user.urlFotoProfilo}"/> 
-                                <a href="Bacheca?user=${user.id}">${user.nome} ${user.cognome}</a> 
+                                <a href="bacheca.html?user=${user.id}">${user.nome} ${user.cognome}</a> 
                             </div>
                         </li>        
                     </c:forEach>    
@@ -46,7 +46,7 @@
                     <c:forEach var="group" items="${gruppi}">
                         <li>
                             <img alt ="Foto" src="${group.urlImmagine}"/> 
-                            <a href="Bacheca?group=${group.id}">${group.nome}</a>                            
+                            <a href="bacheca.html?group=${group.id}">${group.nome}</a>                            
                         </li>                                 
                     </c:forEach>  
                 </ul>
