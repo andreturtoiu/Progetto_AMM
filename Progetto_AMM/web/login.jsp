@@ -26,10 +26,10 @@
                 
             <form action="login.html" method="get">
                 <label for="uName">Username</label>
-                <input type="text" name="username" id="uName"/>
+                <input type="text" name="username" id="uName" value ="Harry"/>
 
                 <label for="pswd">Password</label>
-                <input type="password" name="pswd" id="pswd"/>
+                <input type="password" name="pswd" id="pswd" value = "123"/>
 
                 <button type="submit">Accedi</button>
             </form>             

@@ -50,16 +50,22 @@ public class Filter extends HttpServlet {
                 {
                     // Esegue la ricerca
                     List<UtentiRegistrati> listaAmici = UtentiRegistratiFactory.getInstance()
-                            .getAmiciList(request.getParameter("nomeAmico"),loggedId);       
-                    request.setAttribute("listaAmici", listaAmici);
+                            .getAmiciList(request.getParameter("nomeAmico"),loggedId);  
 
+                    if(!listaAmici.isEmpty()){
+                       request.setAttribute("listaAmici", listaAmici);
+                    }else 
+                        request.setAttribute("listaVuota",true);
+                    
+    
                     // Quando si restituisce del json e' importante segnalarlo ed evitare il caching
                     response.setContentType("application/json");
                     response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
                     response.setHeader("Cache-Control", "no-store, no-cache, "
                             + "must-revalidate");
+                    
                     // Genero il json con una jsp
-                    request.getRequestDispatcher("filterJason.jsp").
+                    request.getRequestDispatcher("filterJson.jsp").
                             forward(request, response);
                 }
             }

@@ -42,11 +42,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Filter</servlet-name>
-        <url-pattern>/Filter</url-pattern>
+        <url-pattern>/filter.json</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FilterGruppi</servlet-name>
-        <url-pattern>/FilterGruppi</url-pattern>
+        <url-pattern>/filterGruppi.json</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

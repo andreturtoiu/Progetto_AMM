@@ -18,8 +18,7 @@ function createElementUser(usr){
              .attr("class","userData")
              .append(img)
              .append(link);
-            
-    
+
     return $("<li>")
             .append(userData);
 }
@@ -27,7 +26,7 @@ function createElementUser(usr){
 function createElementGroup(grp){
     var img = $("<img>")
             .attr("alt","Foto")
-            .attr("src",grp.urlImmagine);
+            .attr("src",grp.urlFotoProfilo);
     var link = $("<a>")
         .attr("href", "bacheca.html?group="+grp.id)
         .html(grp.nome);
@@ -38,7 +37,7 @@ function createElementGroup(grp){
 }
 
 
-function stateSuccess(data){
+function stateSuccessUser(data){
     //Funzione successo utente
     var title = $("<h3>")
                 .html("Amici"); 
@@ -48,11 +47,15 @@ function stateSuccess(data){
     $(userList).empty();
     $(userList).append(title);
     
-    for(var instance in data){
-        $(lista).append(createElementUser(data[instance]));
+    if(data[0].vuota === "true")
+        $(userList)
+            .append($("<p>")
+            .html("User not found"));
+   else
+        for(var instance in data){
+            $(lista).append(createElementUser(data[instance]));
     }
     $(userList).append(lista);
-
 }
 
 
@@ -66,12 +69,15 @@ function stateSuccessGroup(data){
     var listaGruppi = $("<ul>");
     $(groupList).empty();
     $(groupList).append(title);
-    
-    for(var instance in data){
-        $(listaGruppi).append(createElementGroup(data[instance]));
-    }
-    $(groupList).append(listaGruppi);
-    
+    if(data[0].vuotaGruppi === "true")
+        $(groupList)
+            .append($("<p>")
+            .html("Group not found"));
+    else
+        for(var instance in data){
+            $(listaGruppi).append(createElementGroup(data[instance]));
+        }
+    $(groupList).append(listaGruppi);   
 }
 
 function stateFailure(data, state){
@@ -84,10 +90,25 @@ $(document).ready(function(){
         var wanted = $("#searchFriends")[0].value;
         
         $.ajax({
-            url: "Filter",
+            url: "filter.json",
             data:{
                 cmd:"search",
                 nomeAmico: wanted 
+            },
+            dataType:"json",
+            success: function(data, state){
+                stateSuccessUser(data);
+            },
+            error: function(data, state){
+                stateFailure(data, state);
+            }
+        });
+       
+        $.ajax({
+            url: "filterGruppi.json",
+            data:{
+                cmd:"search",
+                nomeAmico: wanted
             },
             dataType:"json",
             success: function(data, state){
@@ -97,28 +118,10 @@ $(document).ready(function(){
                 stateFailure(data, state);
             }
         });
+
     });
     
-    
-     /*$("#searchFriends").change(function(){
-        
-        var wanted = $("#searchFriends")[0].value;
-        
-        $.ajax({
-            url: "FilterGruppi",
-            data:{
-                cmd:"search",
-                nomeAmico: wanted 
-            },
-            dataType:"json",
-            success: function(data, state){
-                stateSuccess(data);
-            },
-            error: function(data, state){
-                stateFailure(data, state);
-            }
-        });
-    });*/
+
 });
 
 

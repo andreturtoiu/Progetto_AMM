@@ -53,6 +53,7 @@ public class Login extends HttpServlet {
         //Utente loggato
         if (session.getAttribute("loggedIn") != null && session.getAttribute("loggedIn").equals(true)) {
             int userId = (Integer)session.getAttribute("loggedId");
+            //Se il profilo è completo allora si è indirizzati alla bacheca
             if(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userId).completo())
                     request.getRequestDispatcher("bacheca.html").forward(request, response);
                   else 

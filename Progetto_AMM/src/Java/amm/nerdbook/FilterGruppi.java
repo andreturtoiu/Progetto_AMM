@@ -51,7 +51,10 @@ public class FilterGruppi extends HttpServlet {
 
                     List<Gruppi> listaGruppi = GruppiFactory.getInstance()
                             .getGroupList(request.getParameter("nomeAmico"),loggedId); 
-                    request.setAttribute("listaGruppi", listaGruppi);
+                    if(!listaGruppi.isEmpty())
+                        request.setAttribute("listaGruppi", listaGruppi);
+                    else
+                        request.setAttribute("listaGruppiVuota", true);
                     
                     // Quando si restituisce del json e' importante segnalarlo ed evitare il caching
                     response.setContentType("application/json");
@@ -59,7 +62,7 @@ public class FilterGruppi extends HttpServlet {
                     response.setHeader("Cache-Control", "no-store, no-cache, "
                             + "must-revalidate");
                     // Genero il json con una jsp
-                    request.getRequestDispatcher("filterJasonGroups.jsp").
+                    request.getRequestDispatcher("filterJsonGroups.jsp").
                             forward(request, response);
                 }
             }

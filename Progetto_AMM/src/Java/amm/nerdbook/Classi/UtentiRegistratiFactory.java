@@ -127,17 +127,11 @@ public class UtentiRegistratiFactory {
             List<UtentiRegistrati> friends = new ArrayList();
 			
             String query =  "SELECT * FROM Utenti " +
-
                             "JOIN Amicizie ON Utenti.id = Amicizie.idUtente1 " +
-
                             "WHERE Amicizie.idUtente2 = ? " +
-
                             "UNION " +
-
                             "SELECT * FROM Utenti " +
-
                             "JOIN Amicizie ON Utenti.id = Amicizie.idUtente2 " +
-
                             "WHERE Amicizie.idUtente1 = ?"; 
                        
             
@@ -305,24 +299,19 @@ public class UtentiRegistratiFactory {
             
             String query =
                             "SELECT * FROM UTENTI "  
-                    
-                            +"WHERE ( LOWER(nome) LIKE LOWER(?) OR LOWER(cognome) LIKE LOWER(?) ) AND id in "
-                           
-                            + "(SELECT id FROM Utenti JOIN Amicizie ON Utenti.id = Amicizie.idUtente1 WHERE Amicizie.idUtente2 = ? "
-                            
-                            +"UNION " 
-                                
+                             //concatenazione di nome e cognome 
+                            +"WHERE ((LOWER(nome) || ' ' || LOWER(cognome)) LIKE LOWER(?)) AND id in "
+                            +"(SELECT id FROM Utenti JOIN Amicizie ON Utenti.id = Amicizie.idUtente1 WHERE Amicizie.idUtente2 = ? " 
+                            +"UNION "              
                             +"SELECT id FROM Utenti JOIN Amicizie ON Utenti.id = Amicizie.idUtente2 WHERE Amicizie.idUtente1 = ? )";
-            
-            
+
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
             
             // Si associano i valori
             stmt.setString(1, "%" + name + "%");
-            stmt.setString(2, "%" + name + "%");
+            stmt.setInt(2, id);
             stmt.setInt(3, id);
-            stmt.setInt(4, id);
      
             
             

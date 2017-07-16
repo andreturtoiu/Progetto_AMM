@@ -448,10 +448,13 @@ Inserimento delle amicizie
 */
 
 INSERT INTO amicizie(idUtente1, idUtente2)
-VALUES (2,1),
-        (3,2),
-        (3,1),
-		(4,1),
+VALUES	(1,2),
+		(1,3),
+		(1,4),
+		(2,3),
+		(2,4),
+		(3,4),
+		
 		(4,2),
 		(4,3),
 		(5,6),

@@ -140,7 +140,7 @@ public class GruppiFactory {
                     
                             +"WHERE ( LOWER(nome) LIKE LOWER(?) ) AND id in "
                            //select che rappresenta i gruppi a cui l'utente è iscritto
-                            + "(SELECT * FROM gruppi "
+                            + "(SELECT id FROM gruppi "
                                 + "JOIN iscrizioni ON gruppi.id = iscrizioni.idGruppi "
                                 + " WHERE idUtenti= ?) ";
                                 

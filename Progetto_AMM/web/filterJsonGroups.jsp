@@ -8,8 +8,12 @@
 <%@ taglib prefix="json" uri="http://www.atg.com/taglibs/json" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <json:array>
+    <c:if test = "${listaGruppiVuota == 'true'}">
+        <json:object>
+            <json:property name = "vuotaGruppi" value="true"/>    
+        </json:object>
+    </c:if>
     <c:forEach var="group" items="${listaGruppi}">
         <json:object>
             <json:property name="nome" value="${group.nome}"/>
@@ -17,5 +21,6 @@
             <json:property name="urlFotoProfilo" value="${group.urlImmagine}"/>
         </json:object>
     </c:forEach>
+    
 </json:array>
 
